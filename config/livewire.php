@@ -69,7 +69,7 @@ return [
     */
 
     /* 'app_url' => null, */
-    'asset_url' => url('/'),
+    /* 'asset_url' => url('/'), */
 
 
     /*
