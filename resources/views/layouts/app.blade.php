@@ -74,12 +74,10 @@
                                         <li><a href="{{url("about")}}">Sobre Nós</a></li>
                                         <li><a href="{{url("curso")}}">Serviços</a>
                                             <ul>
-                                                <li><a href="{{ route('inscricao.index')}}">Inscrições universitárias</a></li>
-                                                <li><a href="{{ route('bolsa.index')}}">Bolsas de Estudo</a></li>
-                                                <li><a href="{{ route('curso.index')}}">Cursos Online</a></li>
-                                                <li><a href="{{ route('ano.index')}}">Ano de Fundação</a></li>
-                                                <li><a href="{{ route('cotacao.index')}}">Cotação</a></li>
-                                                <li><a href="{{ route('traducao.index')}}">Tradução</a></li>
+                                                @foreach($sr as $s)
+                                                <li><a href="">{{ $s->nome }}</li>
+                                                @endforeach
+                                                <li><a href="{{ url('traducao')}}">Tradução</a></li>
                                             </ul>
                                         </li>
                                         <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
@@ -120,8 +118,8 @@
             </div>
         </div>
     </header>
-    
-        {{ $slot }}
+
+    {{ $slot }}
 
     <footer class="footer-area">
         <div class="main-footer">
@@ -135,9 +133,9 @@
                             <p>O SEU SONHO DE ESTUDAR NO EXTERIOR AGORA ESTÁ AO SEU ALCANCE </p>
                             <div class="footer-social">
                                 <ul>
-                                    <li><a href="https://facebook.com/firsteducationmz"><i class="zmdi zmdi-facebook"></i></a></li>
-                                    <li><a href="https://instagram.com/firsteducationmz"><i class="zmdi zmdi-instagram"></i></a></li>
-                                    <li><a href="https://wa.me/+258869125903"><i class="zmdi zmdi-whatsapp"></i></a></li>
+                                    <li><a href="https://facebook.com/firsteducationmz"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://instagram.com/firsteducationmz"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://wa.me/+258869125903"><i class="fab fa-whatsapp"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -146,12 +144,12 @@
                         <div class="single-widget">
                             <h3>Serviços</h3>
                             <ul>
-                                <li><a href="{{ route('inscricao.index')}}">Inscrições universitárias</a></li>
-                                <li><a href="{{ route('bolsa.index')}}">Bolsas de Estudo</a></li>
-                                <li><a href="{{ route('curso.index')}}">Cursos Online</a></li>
-                                <li><a href="{{ route('ano.index')}}">Ano de Fundação</a></li>
-                                <li><a href="{{ route('cotacao.index')}}">Cotação</a></li>
-                                <li><a href="{{ route('traducao.index')}}">Tradução</a></li>
+                                <li><a href="{{ url('inscricao')}}">Inscrições universitárias</a></li>
+                                <li><a href="{{ url('bolsa')}}">Bolsas de Estudo</a></li>
+                                <li><a href="{{ url('curso')}}">Cursos Online</a></li>
+                                <li><a href="{{ url('ano')}}">Ano de Fundação</a></li>
+                                <li><a href="{{ url('cotacao')}}">Cotação</a></li>
+                                <li><a href="{{ url('traducao')}}">Tradução</a></li>
                             </ul>
                         </div>
                     </div>
