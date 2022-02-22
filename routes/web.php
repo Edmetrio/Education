@@ -11,7 +11,17 @@ use App\Http\Controllers\PessoalController;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\SobreController;
 use App\Http\Controllers\TraducaoController;
+use App\Http\Livewire\Anos;
+use App\Http\Livewire\Aplicars;
 use App\Http\Livewire\Bolsas;
+use App\Http\Livewire\Cotacaos;
+use App\Http\Livewire\Cursos;
+use App\Http\Livewire\Formulario;
+use App\Http\Livewire\Inicios;
+use App\Http\Livewire\Inscricaos;
+use App\Http\Livewire\Servicos;
+use App\Http\Livewire\Sobres;
+use App\Http\Livewire\Traducaos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +36,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', Inicios::class);
 
-Route::resource('bolsa', BolsaController::class);
+/* Route::resource('bolsa', BolsaController::class);
 
 Route::resource('ano', AnoController::class);
 
@@ -44,9 +54,20 @@ Route::resource('servico', ServicoController::class);
 
 Route::resource('aplicar', AplicarController::class);
 
-Route::resource('sobre', SobreController::class);
+Route::resource('sobre', SobreController::class); */
 
-Route::get('bolsas', Bolsas::class);
+//Livewire
+Route::get('bolsa', Bolsas::class);
+Route::get('inicio', Inicios::class);
+Route::get('ano', Anos::class);
+Route::get('inscricao', Inscricaos::class);
+Route::get('curso', Cursos::class);
+Route::get('cotacao', Cotacaos::class);
+Route::get('traducao', Traducaos::class);
+Route::get('aplicar', Aplicars::class);
+Route::get('servico', Servicos::class);
+Route::get('sobre', Sobres::class);
+Route::get('formulario', Formulario::class);
 
 Route::get('tradutor', [DashboardController::class, 'teacher']);
 
