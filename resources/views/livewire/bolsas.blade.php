@@ -116,11 +116,9 @@
                             <h3>Aplica-se já</h3>
                             <hr>
                             <ul>
-                                <li><a href="{{url("inscricao")}}">Inscrições universitárias</a></li>
-                                <li><a href="{{url("bolsa")}}">Bolsas de Estudos</a></li>
-                                <li><a href="{{url("online")}}">Cursos Online</a></li>
-                                <li><a href="{{url("fundacao")}}">Ano de Fundação</a></li>
-                                <li><a href="#">Prdução de CV</a></li>
+                                @foreach($servico as $c)
+                                <li><a href="">{{$c->nome}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
