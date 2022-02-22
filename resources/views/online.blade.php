@@ -133,6 +133,7 @@
             </div>
         </div>
     </div>
+</div>
     <!-- Blog End -->
 
     @endsection
