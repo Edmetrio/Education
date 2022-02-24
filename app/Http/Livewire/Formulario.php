@@ -19,6 +19,13 @@ class Formulario extends Component
     public $createData = false;
     public $updateData = false;
 
+    private function resetInput()
+    {
+        $this->nome = '';
+        $this->descricao = '';
+        $this->texto = '';
+        $this->icon = '';
+    }
     
     public function store()
     {
@@ -31,6 +38,7 @@ class Formulario extends Component
 
         $validateDate['icon'] = $this->icon->store('files', 'public');
         Servico::create($validateDate);
+        $this->resetInput();
         session()->flash('status', 'Serviço criada com sucesso!');  
     }
 
@@ -77,10 +85,8 @@ class Formulario extends Component
         $this->showData = true;
         $this->createData = false;
         $this->updateData = false;
-        session()->flash('status', 'Serviço criada com sucesso!');  
-
-
-        
+        $this->resetInput();
+        session()->flash('status', 'Serviço criada com sucesso!');    
     }
 
     public function render()
