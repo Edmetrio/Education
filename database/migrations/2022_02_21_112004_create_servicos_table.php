@@ -17,7 +17,7 @@ class CreateServicosTable extends Migration
             $table->uuid('id')->primary();
             $table->string('nome')->unique();
             $table->string('icon')->nullable();
-            $table->string('descricao')->nullable();
+            $table->longText('descricao')->nullable();
             $table->longText('texto')->nullable();
             $table->string('estado')->default('on')->nullable();
             $table->timestamps();
