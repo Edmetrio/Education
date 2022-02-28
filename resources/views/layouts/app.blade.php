@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="index.html"><img src="img/logo/logo2.png" alt="eduhome" /></a>
+                            <a href="index.html"><img src="{{asset('img/logo/logo2.png')}}" alt="FirstEducation" /></a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
@@ -75,9 +75,8 @@
                                         <li><a href="{{url("curso")}}">Serviços</a>
                                             <ul>
                                                 @foreach($sr as $s)
-                                                <li><a href="">{{ $s->nome }}</li>
+                                                <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
                                                 @endforeach
-                                                <li><a href="{{ url('traducao')}}">Tradução</a></li>
                                             </ul>
                                         </li>
                                         <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
@@ -128,7 +127,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-widget pr-60">
                             <div class="footer-logo pb-25">
-                                <a href="index.html"><img src="img/logo/footer-logo.png" alt="eduhome"></a>
+                                <a href="index.html"><img src="{{asset('img/logo/footer-logo.png')}}" alt="FirstEducation"></a>
                             </div>
                             <p>O SEU SONHO DE ESTUDAR NO EXTERIOR AGORA ESTÁ AO SEU ALCANCE </p>
                             <div class="footer-social">
@@ -144,12 +143,9 @@
                         <div class="single-widget">
                             <h3>Serviços</h3>
                             <ul>
-                                <li><a href="{{ url('inscricao')}}">Inscrições universitárias</a></li>
-                                <li><a href="{{ url('bolsa')}}">Bolsas de Estudo</a></li>
-                                <li><a href="{{ url('curso')}}">Cursos Online</a></li>
-                                <li><a href="{{ url('ano')}}">Ano de Fundação</a></li>
-                                <li><a href="{{ url('cotacao')}}">Cotação</a></li>
-                                <li><a href="{{ url('traducao')}}">Tradução</a></li>
+                                @foreach($sr as $s)
+                                <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -168,8 +164,8 @@
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-widget">
                             <h3>Contactos</h3>
-                            <p>Av. Amilcar Cabral<br>Maputo-Moçambique</p>
-                            <p>+258 86 86 912 5903</p>
+                            <p>Av. Salvador Allende, nº. 42<br>Maputo-Moçambique</p>
+                            <p><a href="tel:+25886869125903">+258 86 86 912 5903</a></p>
                             <p>info@firsteducation.edu.mz</p>
                         </div>
                     </div>
