@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Servico;
 use Livewire\Component;
 
 class Sobres extends Component
 {
     public function render()
     {
-        return view('livewire.sobres');
+        $sr = Servico::orderBy('created_at', 'desc')->get();
+        return view('livewire.sobres')->layout('layouts.app', compact('sr'));
     }
 }
