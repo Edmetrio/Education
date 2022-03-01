@@ -69,22 +69,22 @@
                             <div class="main-menu one text-right">
                                 <nav>
                                     <ul>
-                                        <li><a href="{{url("/")}}">Inicio</a>
+                                        <li><a href="{{url('/')}}">Inicio</a>
                                         </li>
-                                        <li><a href="{{url("about")}}">Sobre Nós</a></li>
-                                        <li><a href="{{url("curso")}}">Serviços</a>
+                                        <li><a href="{{url('sobre')}}">Sobre Nós</a></li>
+                                        <li><a href="{{url('servico')}}">Serviços</a>
                                             <ul>
                                                 @foreach($sr as $s)
                                                 <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
-                                        </li>
-                                        <li><a href="{{url("aplicar")}}">Como Aplicar</a>
+                                        <!-- <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
+                                        </li> -->
+                                        <li><a href="{{url('aplicar')}}">Como Aplicar</a>
 
                                         </li>
-                                        <li><a href="contact.html">Contactos</a></li>
+                                        <li><a href="{{ url('contacto')}}">Contactos</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -195,6 +195,30 @@
     <script src="{{ url('assets/js/main.js')}}"></script>
 
     @livewireScripts
+    <script>
+        window.addEventListener('swal:modal', event => {
+            swal({
+                title: event.detail.message,
+                text: event.detail.text,
+                icon: event.detail.type,
+            });
+        });
+
+        window.addEventListener('swal:confirm', event => {
+            swal({
+                    title: event.detail.message,
+                    text: event.detail.text,
+                    icon: event.detail.type,
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.livewire.emit('remove');
+                    }
+                });
+        });
+    </script>
 </body>
 
 </html>
