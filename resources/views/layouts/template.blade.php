@@ -44,7 +44,6 @@
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-12">
                         <div class="content-wrapper one">
-
                             <div class="main-menu one text-right">
                                 <nav>
                                     <ul>
@@ -53,20 +52,17 @@
                                         <li><a href="{{ url('sobre')}}">Sobre Nós</a></li>
                                         <li><a href="{{ url('servico')}}">Serviços</a>
                                             <ul>
-                                                <li><a href="{{ url('inscricao')}}">Inscrições universitárias</a></li>
-                                                <li><a href="{{ url('bolsa')}}">Bolsas de Estudo</a></li>
-                                                <li><a href="{{ url('curso')}}">Cursos Online</a></li>
-                                                <li><a href="{{ url('ano')}}">Ano de Fundação</a></li>
-                                                <li><a href="{{ url('cotacao')}}">Cotação</a></li>
-                                                <li><a href="{{ url('traducao')}}">Tradução</a></li>
+                                                @foreach($sr as $s)
+                                                <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
-                                        <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
-                                        </li>
+<!--                                         <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
+                                        </li> -->
                                         <li><a href="{{ url('aplicar')}}">Como Aplicar</a>
 
                                         </li>
-                                        <li><a href="#">Contactos</a></li>
+                                        <li><a href="{{ url('contacto')}}">Contactos</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -78,61 +74,34 @@
             </div>
         </div>
     </header>
-    <!-- Header Area End -->
-    <!-- Background Area Start -->
+
     <section id="slider-container" class="slider-area">
         <div class="slider-owl owl-theme owl-carousel">
-            <!-- Start Slingle Slide -->
-            <div class="single-slide item" style="background-image: url(img/slider/slider1.jpg)">
-                <!-- Start Slider Content -->
-                <div class="slider-content-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-md-offset-left-5">
-                                <div class="slide-content-wrapper">
-                                    <div class="slide-content">
-                                        <h3>ESTUDE NO EXTERIOR</h3>
-                                        <h2>COM A FIRST EDUCATION </h2>
-                                        <p>A First Education é uma agência que tem como objectivo principal ajudar os estudantes a realizar o sonho de estudar no exterior </p>
-                                        <a class="default-btn" href="{{url("aplicar")}}">Aplique Já</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Start Slider Content -->
-            </div>
-            <!-- End Slingle Slide -->
-            <!-- Start Slingle Slide -->
-            <div class="single-slide item" style="background-image: url(img/slider/slider2.jpg)">
-                <!-- Start Slider Content -->
+
+            @foreach($slider as $s)
+            <!-- <img class="img-fluid" src="{{asset('storage')}}/{{$s->icon}}" style="position: absolute; left: 0; top: 0; background: rgba(0, 0, 0, 0.32); width: 100%; height: 100%; content: '';" /> -->
+            <div class="single-slide item" style="background-image: url({{asset('storage')}}/{{$s->icon}})">
                 <div class="slider-content-area">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7 col-md-offset-left-5">
                                 <div class="slide-content-wrapper text-left">
                                     <div class="slide-content">
-                                        <h3>ESTUDE NO EXTERIOR </h3>
-                                        <h2>COM A FIRST EDUCATION </h2>
-                                        <p>A First Education é uma agência que tem como objectivo principal ajudar os estudantes a realizar o sonho de estudar no exterior </p>
-                                        <a class="default-btn" href="{{url("about")}}">Sobre Nós</a>
+
+                                        <h2> {{ $s->nome }} </h2>
+                                        <p> {{ $s->descricao }} </p>
+                                        <a class="default-btn" href="{{url("about")}}">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Start Slider Content -->
             </div>
-            <!-- End Slingle Slide -->
-            <!-- Start Slingle Slide -->
-            <!-- End Slingle Slide -->
+            @endforeach
         </div>
     </section>
-    <!-- Background Area End -->
 
-    <!-- Choose Start -->
     <section class="choose-area pb-85 pt-77">
         <div class="container">
             <div class="row">
@@ -173,12 +142,9 @@
                         <div class="single-widget">
                             <h3>Serviços</h3>
                             <ul>
-                                <li><a href="{{ url('inscricao')}}">Inscrições universitárias</a></li>
-                                <li><a href="{{ url('bolsa')}}">Bolsas de Estudo</a></li>
-                                <li><a href="{{ url('curso')}}">Cursos Online</a></li>
-                                <li><a href="{{ url('ano')}}">Ano de Fundação</a></li>
-                                <li><a href="{{ url('cotacao')}}">Cotação</a></li>
-                                <li><a href="{{ url('traducao')}}">Tradução</a></li>
+                                @foreach($sr as $s)
+                                <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -197,8 +163,8 @@
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="single-widget">
                             <h3>Contactos</h3>
-                            <p>Av. Amilcar Cabral<br>Maputo-Moçambique</p>
-                            <p>+258 86 86 912 5903</p>
+                            <p>Av. Salvador Allende, nº. 42<br>Maputo-Moçambique</p>
+                            <p><a href="tel:+258820046681">+258 86 86 912 5903</a></p>
                             <p>info@firsteducation.edu.mz</p>
                         </div>
                     </div>
