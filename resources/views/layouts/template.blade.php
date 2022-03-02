@@ -90,7 +90,7 @@
 
                                         <h2> {{ $s->nome }} </h2>
                                         <p> {{ $s->descricao }} </p>
-                                        <a class="default-btn" href="{{url("about")}}">Saiba mais</a>
+                                        <a class="default-btn" href="{{url('about')}}">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
@@ -152,11 +152,11 @@
                         <div class="single-widget">
                             <h3>links Rápidos</h3>
                             <ul>
-                                <li><a href="{{url("curso")}}">Serviços</a></li>
-                                <li><a href="{{url("about")}}">Sobre Nós</a></li>
-                                <li><a href="{{url("tradutor")}}">Tradutores</a></li>
-                                <li><a href="{{url("aplicar")}}">Como Aplicar</a></li>
-                                <li><a href="event.html">Contactos</a></li>
+                                <li><a href="{{url('servico')}}">Serviços</a></li>
+                                <li><a href="{{url('sobre')}}">Sobre Nós</a></li>
+                                <!-- <li><a href="{{url("tradutor")}}">Tradutores</a></li> -->
+                                <li><a href="{{url('aplicar')}}">Como Aplicar</a></li>
+                                <li><a href="{{ url('contacto') }}">Contactos</a></li>
                             </ul>
                         </div>
                     </div>
