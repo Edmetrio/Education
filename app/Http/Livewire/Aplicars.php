@@ -30,7 +30,7 @@ class Aplicars extends Component
             'mensagem' => 'required'
         ]);
         $detail = $validatedDate;
-        Mail::to('edmetrio@firsteducation.edu.mz')->send(new Teste($detail));
+        Mail::to('info@firsteducation.edu.mz')->send(new Teste($detail));
         session()->flash('status', 'E-mail Enviado com Sucesso!');
         $this->resetInput();
     }
