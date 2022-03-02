@@ -14,14 +14,23 @@ use App\Http\Controllers\TraducaoController;
 use App\Http\Livewire\Anos;
 use App\Http\Livewire\Aplicars;
 use App\Http\Livewire\Bolsas;
+use App\Http\Livewire\Contactos;
 use App\Http\Livewire\Cotacaos;
 use App\Http\Livewire\Cursos;
+use App\Http\Livewire\DetalheServico;
+use App\Http\Livewire\FormDepoimento;
+use App\Http\Livewire\FormParceiro;
+use App\Http\Livewire\FormPoost;
+use App\Http\Livewire\FormSlider;
 use App\Http\Livewire\Formulario;
 use App\Http\Livewire\Inicios;
 use App\Http\Livewire\Inscricaos;
+use App\Http\Livewire\Pacotes;
 use App\Http\Livewire\Servicos;
 use App\Http\Livewire\Sobres;
 use App\Http\Livewire\Traducaos;
+use App\Models\Models\Poost;
+use App\Models\Models\Slider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,7 +76,17 @@ Route::get('traducao', Traducaos::class);
 Route::get('aplicar', Aplicars::class);
 Route::get('servico', Servicos::class);
 Route::get('sobre', Sobres::class);
+Route::get('contacto', Contactos::class);
+
+//Formulários
 Route::get('formulario', Formulario::class);
+Route::get('servico/{id}', DetalheServico::class);
+
+Route::get('depoimentos', FormDepoimento::class);
+Route::get('parceiros', FormParceiro::class);
+Route::get('poosts', FormPoost::class);
+Route::get('sliders', FormSlider::class);
+Route::get('pacotes', Pacotes::class);
 
 Route::get('tradutor', [DashboardController::class, 'teacher']);
 
