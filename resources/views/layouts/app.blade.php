@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <div class="header-top-left">
-                            <p>PARA MAIS INFORMAÇÕES +258 86 912 5903</p>
+                            <p>PARA MAIS INFORMAÇÕES <a href="https://wa.me/+258869125903" style="color: white;">+258 86 912 5903</a></p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
@@ -153,11 +153,11 @@
                         <div class="single-widget">
                             <h3>links Rápidos</h3>
                             <ul>
-                                <li><a href="course.html">Serviços</a></li>
-                                <li><a href="about.html">Sobre Nós</a></li>
-                                <li><a href="teacher.html">Tradutores</a></li>
-                                <li><a href="aplicar.html">Como Aplicar</a></li>
-                                <li><a href="event.html">Contactos</a></li>
+                                <li><a href="{{ url('servico') }}">Serviços</a></li>
+                                <li><a href="{{ url('sobre') }}">Sobre Nós</a></li>
+                                <!-- <li><a href="teacher.html">Tradutores</a></li> -->
+                                <li><a href="{{ url('aplicar') }}">Como Aplicar</a></li>
+                                <li><a href="{{ url('contacto') }}">Contactos</a></li>
                             </ul>
                         </div>
                     </div>
@@ -195,30 +195,6 @@
     <script src="{{ url('assets/js/main.js')}}"></script>
 
     @livewireScripts
-    <script>
-        window.addEventListener('swal:modal', event => {
-            swal({
-                title: event.detail.message,
-                text: event.detail.text,
-                icon: event.detail.type,
-            });
-        });
-
-        window.addEventListener('swal:confirm', event => {
-            swal({
-                    title: event.detail.message,
-                    text: event.detail.text,
-                    icon: event.detail.type,
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.livewire.emit('remove');
-                    }
-                });
-        });
-    </script>
 </body>
 
 </html>
