@@ -29,6 +29,6 @@ class Teste extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.Teste');
+        return $this->subject('Solicitação de Servico')->view('emails.Teste');
     }
 }
