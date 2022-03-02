@@ -46,7 +46,7 @@
                                 <p>{{ $p->descricao }}</p>
                             </div>
                             <div class="event-content-right">
-                                <a class="default-btn" href="event-details.html">Saiba Mais</a>
+                                <a class="default-btn" href="{{ $p->link }}">Saiba Mais</a>
                             </div>
                         </div>
                     </div>
