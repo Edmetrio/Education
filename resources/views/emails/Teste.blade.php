@@ -10,8 +10,8 @@
     <h2>Solicitação de Informação</h2><hr>
     <p><strong>Nome: </strong>{{$detail['nome']}}</p>
     <p><strong> E-mail: </strong>{{$detail['email']}}</p>
-    <p><strong> Região: </strong>{{$detail['assunto']}}</p>
-    <p><strong>Orçamento: </strong>{{$detail['mensagem']}}</p>
+    <p><strong> Assunto: </strong>{{$detail['assunto']}}</p>
+    <p><strong>Mensagem: </strong>{{$detail['mensagem']}}</p>
     <p>Muito Obrigado</p>
     <p>Criado por <a href="https://firsteducation.edu.mz/">FirstTech</a></p>
 </body>
