@@ -165,7 +165,7 @@
                         <div class="single-widget">
                             <h3>Contactos</h3>
                             <p>Av. Salvador Allende, nº. 42<br>Maputo-Moçambique</p>
-                            <p><a href="tel:+25886869125903">+258 86 86 912 5903</a></p>
+                            <p><a href="tel:+258 86 912 5903">+258 86 912 5903</a></p>
                             <p>info@firsteducation.edu.mz</p>
                         </div>
                     </div>
