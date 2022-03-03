@@ -9,7 +9,7 @@
     <meta name="keywords" content="Inscrições Universitárias,Bolsas de estudos,Cursos online,Ano de fundação" />
     <meta name="author" content="Samuel Sibia e Edimetrio Cossa" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="img/favicon.ico">
+    <link rel="icon" href="{{asset('img/favicon.ico')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="{{url("/")}}"><img src="img/logo/logo.png" alt="logo" class="img-fluid" style=" width: 70px;
+                            <a href="{{url('/')}}"><img src="{{asset('img/logo/Logo.png')}}" alt="logo" class="img-fluid" style=" width: 70px;
                                     height: 40px;"></a>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <div class="main-menu one text-right">
                                 <nav>
                                     <ul>
-                                        <li><a href="{{url("/")}}">Inicio</a>
+                                        <li><a href="{{url('/')}}">Inicio</a>
                                         </li>
                                         <li><a href="{{ url('sobre')}}">Sobre Nós</a></li>
                                         <li><a href="{{ url('servico')}}">Serviços</a>
@@ -90,7 +90,7 @@
 
                                         <h2> {{ $s->nome }} </h2>
                                         <p> {{ $s->descricao }} </p>
-                                        <a class="default-btn" href="{{url('about')}}">Saiba mais</a>
+                                        <a class="default-btn" href="{{url('sobre')}}">Saiba mais</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                         <h2>POR QUE ESCOLHER A FE ?</h2>
                         <p> A First Education tem agentes experientes que servem de ponte entre as Universidades e os alunos, facilitando assim todo processo desde a candidatura até aceitação. </p>
                         <p class="choose-option">A First Education tem agentes específicos espalhados pelas Universidades e contactos com muitas Universidades que tratam directamente dos processos dos estudantes candidatos às vagas. </p>
-                        <a class="default-btn" href="{{url("curso")}}">Aplique Já</a>
+                        <a class="default-btn" href="{{url('servico')}}">Aplique Já</a>
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                         <div class="single-widget">
                             <h3>Contactos</h3>
                             <p>Av. Salvador Allende, nº. 42<br>Maputo-Moçambique</p>
-                            <p><a href="tel:+258820046681">+258 86 86 912 5903</a></p>
+                            <p><a href="tel:+258 86 912 5903">+258 86 912 5903</a></p>
                             <p>info@firsteducation.edu.mz</p>
                         </div>
                     </div>
