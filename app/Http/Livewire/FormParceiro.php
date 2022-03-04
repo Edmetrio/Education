@@ -11,8 +11,8 @@ use Livewire\WithFileUploads;
 class FormParceiro extends Component
 {
     use WithFileUploads;
-    public $nome, $localizacao, $texto, $icon, $descricao, $link;
-    public $edit_nome, $edit_localizacao, $edit_texto, $edit_descricao, $edit_id, $edit_link, $old_icon, $new_icon;
+    public $nome, $localizacao, $texto, $texto2, $texto3, $icon, $descricao, $link;
+    public $edit_nome, $edit_localizacao, $edit_texto, $edit_texto2, $edit_texto3, $edit_descricao, $edit_id, $edit_link, $old_icon, $new_icon;
 
     public $parceiro;
 
@@ -26,6 +26,8 @@ class FormParceiro extends Component
         $this->localizacao = '';
         $this->descricao = '';
         $this->texto = '';
+        $this->texto2 = '';
+        $this->texto3 = '';
         $this->icon = '';
         $this->link = '';
     }
@@ -37,6 +39,8 @@ class FormParceiro extends Component
             'localizacao' => 'required',
             'descricao' => 'required',
             'texto' => 'required',
+            'texto2' => 'required',
+            'texto3' => 'required',
             'link' => 'required',
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
@@ -58,6 +62,8 @@ class FormParceiro extends Component
         $this->edit_localizacao = $parceiro->localizacao;
         $this->edit_descricao = $parceiro->descricao;
         $this->edit_texto = $parceiro->texto;
+        $this->edit_texto2 = $parceiro->texto2;
+        $this->edit_texto3 = $parceiro->texto3;
         $this->edit_link = $parceiro->link;
         $this->old_icon = $parceiro->icon;
     }
@@ -69,6 +75,8 @@ class FormParceiro extends Component
             'edit_localizacao' => 'required',
             'edit_descricao' => 'required',
             'edit_texto' => 'required',
+            'edit_texto2' => 'required',
+            'edit_texto3' => 'required',
             'edit_link' => 'required'
             /* 'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' */
         ]);
@@ -89,6 +97,8 @@ class FormParceiro extends Component
         $validateDate['localizacao'] = $this->edit_localizacao;
         $validateDate['descricao'] = $this->edit_descricao;
         $validateDate['texto'] = $this->edit_texto;
+        $validateDate['texto2'] = $this->edit_texto2;
+        $validateDate['texto3'] = $this->edit_texto3;
         $validateDate['link'] = $this->edit_link;
         $validateDate['icon'] = $filename;
         
@@ -98,6 +108,18 @@ class FormParceiro extends Component
         $this->updateData = false;
         $this->resetInput();
         session()->flash('status', 'Parceiro Actualizado com sucesso!');    
+    }
+
+    public function delete($id)
+    {
+        $parceiro = Parceiro::findOrFail($id);
+        $destination = public_path('storage\\'.$parceiro->icon);
+        File::delete($destination);
+        $parceiro->delete();
+        $this->showData = true;
+        $this->createData = false;
+        $this->updateData = false;
+        session()->flash('status', 'Parceiro apagado com sucesso!');
     }
 
     public function render()
