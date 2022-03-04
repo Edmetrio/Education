@@ -17,14 +17,10 @@ class CreateInscricaosTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('users_id')->nullable();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->uuid('servico_id')->nullable();
-            $table->foreign('servico_id')->references('id')->on('servico')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('pais_id')->nullable();
             $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('intake_id')->nullable();
             $table->foreign('intake_id')->references('id')->on('intake')->onDelete('cascade')->onUpdate('cascade');
-            $table->uuid('grau_id')->nullable();
-            $table->foreign('grau_id')->references('id')->on('grau')->onDelete('cascade')->onUpdate('cascade');
             $table->string('universidade')->nullable();
             $table->decimal('propina', 20,2)->nullable();
             $table->string('fecho')->nullable();
