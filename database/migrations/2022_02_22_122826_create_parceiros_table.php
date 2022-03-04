@@ -20,6 +20,8 @@ class CreateParceirosTable extends Migration
             $table->string('icon')->nullable();
             $table->string('descricao')->nullable();
             $table->longText('texto')->nullable();
+            $table->longText('texto2')->nullable();
+            $table->longText('texto3')->nullable();
             $table->string('link');
             $table->string('estado')->default('on')->nullable();
             $table->timestamps();
