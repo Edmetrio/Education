@@ -15,5 +15,5 @@ class Parceiro extends Model
     protected $guarded = [];
 
     protected $table = 'parceiro';
-    protected $fillable = ['nome', 'localizacao','icon','descricao','texto','link','estado'];
+    protected $fillable = ['nome', 'localizacao','icon','descricao','texto', 'texto2','texto3','link','estado'];
 }
