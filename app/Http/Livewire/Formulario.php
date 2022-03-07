@@ -86,7 +86,7 @@ class Formulario extends Component
         $this->createData = false;
         $this->updateData = false;
         $this->resetInput();
-        session()->flash('status', 'Serviço criada com sucesso!');    
+        session()->flash('status', 'Serviço actualizado com sucesso!');    
     }
 
     public function render()
