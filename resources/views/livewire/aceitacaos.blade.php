@@ -11,7 +11,7 @@
             <h3 class="mb-3">Exemplo de Aceitação</h3>
             <div class="col-md-11 col-sm-12">
                 <div class="about-img">
-                    <img src="img/site/Aceitaçao.jpg" alt="about">
+                    <a href="{{asset('img/site/Aceitacao.jpg')}}"> <img src="{{asset('img/site/Aceitacao.jpg')}}" alt="about"></a>
                 </div>
             </div>
             </div>
