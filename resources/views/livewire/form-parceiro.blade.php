@@ -82,6 +82,20 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
+                                            <strong>2 Texto:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="texto2" placeholder="Detail"></textarea>
+                                            @error('texto2') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>3 Texto:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="texto3" placeholder="Detail"></textarea>
+                                            @error('texto3') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
                                             <strong>Link:</strong>
                                             <input type="text" wire:model="link" class="form-control" placeholder="https://firsteducation.edu.mz/">
                                             @error('link') <span class="text-danger">{{ $message }}</span> @enderror
@@ -163,9 +177,23 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
+                                            <strong>2 Texto:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="edit_texto2" placeholder="Detail"></textarea>
+                                            @error('edit_texto2') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>3 Texto:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="edit_texto3" placeholder="Detail"></textarea>
+                                            @error('edit_texto3') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
                                             <strong>link:</strong>
                                             <input type="text" wire:model="edit_link" class="form-control" placeholder="https://firsteducation.edu.mz/">
-                                            @error('edit_texto') <span classs="text-danger">{{ $message }}</span> @enderror
+                                            @error('edit_link') <span classs="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
