@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="contact-area pt-150 pb-140"> 
+    <div class="contact-area pt-150 pb-20"> 
             <div class="container">     
                 <div class="row">
                     <div class="col-md-5 col-sm-5 col-xs-12">
