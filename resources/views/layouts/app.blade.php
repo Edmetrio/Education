@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icon/section.png')}}" />
+    
     <link rel="stylesheet" href="{{url('assets/css/bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/animate.css')}}">
@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="index.html"><img src="{{asset('img/logo/logo2.png')}}" alt="FirstEducation" /></a>
+                            <a href="{{ url('/') }}"><img src="{{asset('img/logo/Logo.png')}}" alt="FirstEducation" /></a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
@@ -127,7 +127,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-widget pr-60">
                             <div class="footer-logo pb-25">
-                                <a href="index.html"><img src="{{asset('img/logo/footer-logo.png')}}" alt="FirstEducation"></a>
+                                <a href="{{ url('/')}}"><img src="{{asset('img/logo/Logo.png')}}" alt="FirstEducation"></a>
                             </div>
                             <p>O SEU SONHO DE ESTUDAR NO EXTERIOR AGORA ESTÁ AO SEU ALCANCE </p>
                             <div class="footer-social">
