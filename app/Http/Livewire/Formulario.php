@@ -89,6 +89,18 @@ class Formulario extends Component
         session()->flash('status', 'Serviço actualizado com sucesso!');    
     }
 
+    public function delete($id)
+    {
+        $inscricao = Servico::findOrFail($id);
+        $destination = public_path('storage\\'.$inscricao->icon);
+        File::delete($destination);
+        $inscricao->delete();
+        $this->showData = true;
+        $this->createData = false;
+        $this->updateData = false;
+        session()->flash('status', 'Serviço apagado com sucesso!');
+    }
+
     public function render()
     {
         $sr = Servico::orderBy('created_at', 'desc')->get();
