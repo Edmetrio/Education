@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Models\Entidade;
 use App\Models\Models\Inscricao;
 use App\Models\Models\Intake;
 use App\Models\Models\Pais;
@@ -14,8 +13,8 @@ use Livewire\WithFileUploads;
 class Inscricaos extends Component
 {
     use WithFileUploads;
-    public $user_id, $pais_id, $entidade_id, $universidade, $abertura, $fecho, $link, $anexo;
-    public $edit_id, $edit_user_id, $edit_pais_id, $edit_pais_nome, $edit_entidade_id, $edit_entidade_nome, $edit_universidade, $edit_abertura, $edit_fecho, $edit_link, $edit_anexo, $old_anexo, $new_anexo;
+    public $user_id, $pais_id, $universidade, $abertura, $fecho, $link, $anexo;
+    public $edit_id, $edit_user_id, $edit_pais_id, $edit_pais_nome, $edit_universidade, $edit_abertura, $edit_fecho, $edit_link, $edit_anexo, $old_anexo, $new_anexo;
 
     public $showData = true;
     public $createData = false;
@@ -25,7 +24,6 @@ class Inscricaos extends Component
     {
         $this->user_id = '';
         $this->pais_id = '';
-        $this->entidade_id = '';
         $this->universidade = '';
         $this->abertura = '';
         $this->link = '';
@@ -37,7 +35,6 @@ class Inscricaos extends Component
     {
         $validateDate = $this->validate([
             'pais_id' => 'required',
-            'entidade_id' => 'required',
             'universidade' => 'required',
             'abertura' => 'required',
             'fecho' => 'required',
@@ -57,13 +54,11 @@ class Inscricaos extends Component
         $this->showData = false;
         $this->createData = true;
         $this->updateData = true;
-        $inscricao = Inscricao::with('pais','entidades')->findOrFail($id);
+        $inscricao = Inscricao::with('pais')->findOrFail($id);
         $this->edit_id = $inscricao->id;
         $this->edit_user_id = $inscricao->users_id;
         $this->edit_pais_id = $inscricao->pais_id;
         $this->edit_pais_nome = $inscricao->pais->nome;
-        $this->edit_entidade_id = $inscricao->entidade_id;
-        $this->edit_entidade_nome = $inscricao->entidades->nome;
         $this->edit_universidade = $inscricao->universidade;
         $this->edit_abertura = $inscricao->abertura;
         $this->edit_fecho = $inscricao->fecho;
@@ -75,7 +70,6 @@ class Inscricaos extends Component
     {
         $validateDate = $this->validate([
             'edit_pais_id' => 'required',
-            'edit_entidade_id' => 'required',
             'edit_universidade' => 'required',
             'edit_abertura' => 'required',
             'edit_fecho' => 'required',
@@ -98,7 +92,6 @@ class Inscricaos extends Component
 
         $validateDate['users_id'] = $this->edit_user_id;
         $validateDate['pais_id'] = $this->edit_pais_id;
-        $validateDate['entidade_id'] = $this->edit_entidade_id;
         $validateDate['universidade'] = $this->edit_universidade;
         $validateDate['abertura'] = $this->edit_abertura;
         $validateDate['fecho'] = $this->edit_fecho;
@@ -128,8 +121,7 @@ class Inscricaos extends Component
     public function mount()
     {
         $this->pais = Pais::orderBy('created_at', 'desc')->get();
-        $this->entidade = Entidade::orderBy('created_at', 'desc')->get();
-        $this->inscricao = Inscricao::with('pais','entidades')->orderBy('created_at', 'desc')->get();
+        $this->inscricao = Inscricao::with('pais')->orderBy('created_at', 'desc')->get();
     }
 
     public function render()
