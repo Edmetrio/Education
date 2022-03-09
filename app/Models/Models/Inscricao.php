@@ -16,7 +16,7 @@ class Inscricao extends Model
     protected $guarded = [];
 
     protected $table = 'inscricao';
-    protected $fillable = ['user_id','pais_id','entidade_id','universidade','abertura','fecho','link','anexo', 'estado'];
+    protected $fillable = ['user_id','pais_id','universidade','abertura','fecho','link','anexo', 'estado'];
 
     public function entidades()
     {
@@ -31,5 +31,10 @@ class Inscricao extends Model
     public function users()
     {
         return $this->hasOne(User::class, 'id', 'users_id');
+    }
+
+    public function itemcursos()
+    {
+        return $this->hasMany(Itemcurso::class, 'inscricao_id');
     }
 }
