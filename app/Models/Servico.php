@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Models\Itemcurso;
 use App\Models\Models\Pacote;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,5 +22,10 @@ class Servico extends Model
     public function pacotes()
     {
         return $this->hasMany(Pacote::class, 'servico_id');
+    }
+
+    public function itemcursos()
+    {
+        return $this->hasMany(Itemcurso::class, 'servico_id');
     }
 }
