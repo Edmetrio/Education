@@ -19,8 +19,6 @@ class CreateInscricaosTable extends Migration
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('pais_id')->nullable();
             $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade');
-            $table->uuid('entidade_id')->nullable();
-            $table->foreign('entidade_id')->references('id')->on('entidade')->onDelete('cascade')->onUpdate('cascade');
             $table->string('universidade')->nullable();
             $table->string('abertura')->nullable();
             $table->string('fecho')->nullable();
