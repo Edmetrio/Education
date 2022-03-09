@@ -16,4 +16,9 @@ class Grau extends Model
 
     protected $table = 'grau';
     protected $fillable = ['nome','estado'];
+
+    public function itemcursos()
+    {
+        return $this->hasMany(Itemcurso::class, 'grau_id');
+    }
 }
