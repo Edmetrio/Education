@@ -21,4 +21,9 @@ class Curso extends Model
     {
         return $this->hasOne(Categoria::class, 'id', 'categoria_id');
     }
+    
+    public function itemcursos()
+    {
+        return $this->hasMany(Itemcurso::class, 'curso_id');
+    }
 }
