@@ -95,6 +95,18 @@ class FormDepoimento extends Component
         session()->flash('status', 'Depoimento criado com sucesso!');    
     }
 
+    public function delete($id)
+    {
+        $depoimento = Depoimento::findOrFail($id);
+        $destination = public_path('storage\\'.$depoimento->icon);
+        File::delete($destination);
+        $depoimento->delete();
+        $this->showData = true;
+        $this->createData = false;
+        $this->updateData = false;
+        session()->flash('status', 'Depoimento apagado com sucesso!');
+    } 
+
     public function render()
     {
         $this->depoimento = Depoimento::orderBy('created_at', 'desc')->get();
