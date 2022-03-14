@@ -15,5 +15,5 @@ class Itemintake extends Model
     protected $guarded = [];
 
     protected $table = 'itemintake';
-    protected $fillable = ['inscricao_id','intake_id','estado'];
+    protected $fillable = ['inscricao_id','intake_id','superior_id','estado'];
 }
