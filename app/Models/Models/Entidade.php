@@ -21,4 +21,9 @@ class Entidade extends Model
     {
         return $this->hasMany(Inscricao::class, 'entidade_id');
     }
+
+    public function itemcursos()
+    {
+        return $this->hasMany(Itemcurso::class, 'entidade_id');
+    }
 }
