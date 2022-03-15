@@ -20,7 +20,7 @@
     </div>
     <!-- Banner Area End -->
     <!-- Blog Start -->
-    <div class="courses-details-area blog-area pt-150 pb-140">
+    <div class="courses-details-area blog-area pt-150 pb-20">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -37,19 +37,19 @@
                                 <div class="pb-2">
                                     <h3 class="text-uppercase h4 font-weight-bold">Passo 1 - Encontre o seu programa
                                     </h3>
-                                    <p>A FIRST EDUCATION oferece programa de mestrado e licenciatura! Entre em contacto com o <a href="https://wa.me/+258869125903" style="color: green; font-weight: bold;">agente </a> para saber da disponilidade do curso, país e os possíveis valores inclusos.
+                                    <p>A FIRST EDUCATION oferece programa de mestrado e licenciatura! Entre em contacto com o <a href="https://wa.me/+258869125903" style="color: #51BF45; font-weight: bold;">agente </a> para saber da disponilidade do curso, país e os possíveis valores inclusos.
                                     </p>
                                 </div>
                                 <div class="pb-2">
                                     <h3 class="text-uppercase h4 font-weight-bold">Passo 2 - Escolha o serviço
                                     </h3>
-                                    <p>A First Education oferece serviço de <a href="{{ url('servico')}}">Bolsa de estudo</a>, <a href="{{ url('servico')}}"> Inscrição universitária</a>, <a href="{{ url('servico')}}">Ano de Fundação e curso on-line. </a>Caso tenha uma dúvida, entre em contacto com o <a href="https://wa.me/+258869125903" style="color: green; font-weight: bold;">agente</a> para melhor esclarecimento antes de escolher o serviço.
+                                    <p>A First Education oferece serviço de <a href="{{ url('servico')}}">Bolsa de estudo</a>, <a href="{{ url('servico')}}"> Inscrição universitária</a>, <a href="{{ url('servico')}}">Ano de Fundação e curso on-line. </a>Caso tenha uma dúvida, entre em contacto com o <a href="https://wa.me/+258869125903" style="color: #51BF45; font-weight: bold;">agente</a> para melhor esclarecimento antes de escolher o serviço.
                                     </p>
                                 </div>
                                 <div class="pb-2">
                                     <h3 class="text-uppercase h4 font-weight-bold">Passo 3 - Verifique os requisitos
                                     </h3>
-                                    <p><a type="button" data-toggle="modal" data-target="#addStudentModal" style="color: green; font-weight: bold;">Verifique os requisitos da aplicação</a> necessário para aplicar-se na First Education.
+                                    <p><a type="button" data-toggle="modal" data-target="#addStudentModal" style="color: #51BF45; font-weight: bold;">Verifique os requisitos da aplicação</a> necessário para aplicar-se na First Education.
                                     </p>
                                 </div>
                                 <div class="pb-2">
@@ -61,19 +61,19 @@
                                 <div class="pb-2">
                                     <h3 class="text-uppercase h4 font-weight-bold">Passo 5 - Aguardar o Perfil das universidades
                                     </h3>
-                                    <p class="margin">Depois de finalizar a aplicação, a First Education enviará um <a type="button" data-toggle="modal" data-target="#PerfilModal" style="color: green; font-weight: bold;">perfil das Universidades</a> de acordo com os países escolhidos e os respectivos requisitos.<br />
+                                    <p class="margin">Depois de finalizar a aplicação, a First Education enviará um <a type="button" data-toggle="modal" data-target="#PerfilModal" style="color: #51BF45; font-weight: bold;">perfil das Universidades</a> de acordo com os países escolhidos e os respectivos requisitos.<br />
                                     </p>
                                 </div>
                                 <div class="pb-2">
                                     <h3 class="text-uppercase h4 font-weight-bold">Passo 6 - Comprovativo de Candidato
                                     </h3 class="text-uppercase h4 font-weight-bold">
-                                    <p class="margin">A First Education enviará comprovativo de candidatura de todas as Universidades inscritas. Nesse processo a First Education poderá solicitar <a  type="button" data-toggle="modal" data-target="#documentoModal" style="color: green; font-weight: bold;"> documentos adicionais</a>, assim como pagamento de taxa de candidatura, caso a Universidade inscrita cobre.<br />
+                                    <p class="margin">A First Education enviará comprovativo de candidatura de todas as Universidades inscritas. Nesse processo a First Education poderá solicitar <a  type="button" data-toggle="modal" data-target="#documentoModal" style="color: #51BF45; font-weight: bold;"> documentos adicionais</a>, assim como pagamento de taxa de candidatura, caso a Universidade inscrita cobre.<br />
                                     </p>
                                 </div>
                                 <div class="pb-2">
                                     <h3 class="text-uppercase h4 font-weight-bold">Passo 7 - Carta de Aceitação
                                     </h3>
-                                    <p class="margin">Após cumprir com todos requisitos solicitado, a First Education enviará uma <a type="button" data-toggle="modal" data-target="#AceitacaoModal" style="color: green; font-weight: bold;">carta de aceitação</a> quando tiver êxito no seu processo, ou carta de rejeição quando não for aceite a Universidade<br />
+                                    <p class="margin">Após cumprir com todos requisitos solicitado, a First Education enviará uma <a type="button" data-toggle="modal" data-target="#AceitacaoModal" style="color: #51BF45; font-weight: bold;">carta de aceitação</a> quando tiver êxito no seu processo, ou carta de rejeição quando não for aceite a Universidade<br />
                                     </p>
                                 </div>
                                 <hr>
@@ -136,7 +136,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <button wire:click.prevent="store()" type="submit" class="btn btn-primary btn-lg">Salvar</button>
+                                <button wire:click.prevent="store()" type="submit" class="btn btn-primary btn-lg">Enviar</button>
                             </form>
                         </div>
                     </div>
