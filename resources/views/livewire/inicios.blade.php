@@ -3,6 +3,13 @@
     <!-- Courses Area Start -->
     <div class="courses-area pt-150 text-center">
         <div class="container">
+        <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title">
+                        <h2>Serviços</h2>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 @foreach($servico as $s)
                 <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 5%;">
@@ -21,12 +28,44 @@
         </div>
     </div>
 
+    <div class="teacher-area pb-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="section-title text-center">
+                        <h2>Últimos postes</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($poost as $p)
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="single-teacher">
+                        <div class="single-teacher-img">
+                            <a href="{{asset('storage')}}/{{$p->icon}}"><img src="{{asset('storage')}}/{{$p->icon}}"  alt="teacher"></a>
+                        </div>
+                        <div class="single-teacher-content text-center">
+                            <h2><a href="teacher-details.html">{{ $p->nome }}</a></h2>
+                            <h4>{{ $p->descricao }}</h4>
+                            <ul>
+                                <li><a href="https://facebook.com/firsteducationmz"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://instagram.com/firsteducationmz"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://wa.me/+258869125903"><i class="fab fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
     <div class="event-area two text-center pt-10 pb-10">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title">
-                        <h2>Nossos Parceiros</h2>
+                        <h2>Parceiros</h2>
                     </div>
                 </div>
             </div>
@@ -35,10 +74,10 @@
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <div class="single-event mb-35">
                         <div class="event-img">
-                            <a href=""><img src="{{asset('storage')}}/{{$p->icon}}" style="width: 240px; height: 180px;" alt="parceiros"></a>
+                            <a href="{{ url('parceiro', $p->id) }}"><img src="{{asset('storage')}}/{{$p->icon}}" style="width: 240px; height: 180px;" alt="parceiros"></a>
                         </div>
                         <div class="event-content text-left">
-                            <h4><a href="event-details.html">{{ $p->nome }}</a></h4>
+                            <h4><a href="{{ url('parceiro', $p->id) }}">{{ $p->nome }}</a></h4>
                             <ul>
                                 <li><i class="fa fa-map-marker"></i>{{ $p->localizacao}}</li>
                             </ul>
@@ -46,7 +85,7 @@
                                 <p>{{ $p->descricao }}</p>
                             </div>
                             <div class="event-content-right">
-                                <a class="default-btn" href="{{ $p->link }}">Saiba Mais</a>
+                                <a class="default-btn" href="{{ url('parceiro', $p->id) }}">Saiba Mais</a>
                             </div>
                         </div>
                     </div>
@@ -88,36 +127,6 @@
         </div>
     </div>
 
-    <div class="teacher-area pb-10">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section-title text-center">
-                        <h2>Últimos postes</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($poost as $p)
-                <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="single-teacher">
-                        <div class="single-teacher-img">
-                            <a href="{{asset('storage')}}/{{$p->icon}}"><img src="{{asset('storage')}}/{{$p->icon}}"  alt="teacher"></a>
-                        </div>
-                        <div class="single-teacher-content text-center">
-                            <h2><a href="teacher-details.html">{{ $p->nome }}</a></h2>
-                            <h4>{{ $p->descricao }}</h4>
-                            <ul>
-                                <li><a href="https://facebook.com/firsteducationmz"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://instagram.com/firsteducationmz"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="https://wa.me/+258869125903"><i class="fab fa-whatsapp"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
+    
 </div>
 </div>
