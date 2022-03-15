@@ -5,11 +5,13 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>First Education - O Sonho no Estrangeiro</title>
+
     <meta name="description" content="A First Education é uma agência que tem como objectivo principal ajudar os estudantes a realizer o sonho de estudar no exterior" />
     <meta name="keywords" content="Inscrições Universitárias,Bolsas de estudos,Cursos online,Ano de fundação" />
     <meta name="author" content="Samuel Sibia e Edimetrio Cossa" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{asset('img/favicon.ico')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icon/section.png')}}" />
+
 
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
@@ -57,7 +59,7 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-<!--                                         <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
+                                        <!--                                         <li class="hidden-sm"><a href="{{url("tradutor")}}">Tradutores</a>
                                         </li> -->
                                         <li><a href="{{ url('aplicar')}}">Como Aplicar</a>
 
@@ -102,7 +104,7 @@
         </div>
     </section>
 
-    <section class="choose-area pb-85 pt-77">
+    <!-- <section class="choose-area pb-85 pt-77">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-left-4 col-sm-8 col-md-offset-left-4">
@@ -115,7 +117,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     {{ $slot }}
 
@@ -126,7 +128,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-widget pr-60">
                             <div class="footer-logo pb-25">
-                                <a href="index.html"><img src="img/logo/footer-logo.png" alt="eduhome"></a>
+                                <a href="{{ url('/')}}"><img src="{{asset('img/logo/Logo.png')}}" width="150" height="160" alt="FirstEducation"></a>
                             </div>
                             <p>O SEU SONHO DE ESTUDAR NO EXTERIOR AGORA ESTÁ AO SEU ALCANCE </p>
                             <div class="footer-social">
