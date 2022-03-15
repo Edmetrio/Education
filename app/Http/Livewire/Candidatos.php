@@ -31,11 +31,11 @@ class Candidatos extends Component
 
     public $selectedExame = NULL;
 
+    public $servico_id = '3b719c3b-2bd8-494d-a5d5-a3ef8aa288d3';
+
     public $nao = false;
     public $ainda = false;
     public $sim = false;
-
-    public $inscricao = '3b719c3b-2bd8-494d-a5d5-a3ef8aa288d3';
 
     public $pessoaa_id;
     public $successMessage = '';
@@ -55,15 +55,17 @@ class Candidatos extends Component
 
         $this->grau = Grau::orderBy('created_at', 'desc')->get();
         $this->intake = Intake::orderBy('created_at', 'desc')->get();
+        $this->pacote = Pacote::orderBy('created_at', 'desc')->get();
         $this->moeda = Moeda::orderBy('created_at', 'desc')->get();
+
+        
     }
 
     public function render()
     {
-        $pacote = Servico::with('pacotes')->findorFail($this->inscricao);
-        /* dd($pacote); */
+        $pacotes = Servico::with('pacotes')->find($this->servico_id);
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.candidatos', compact('pacote'))->layout('layouts.app', compact('sr'));
+        return view('livewire.candidatos', compact('pacotes'))->layout('layouts.app', compact('sr'));
     }
 
     public function updatedSelectedExame($exame)
