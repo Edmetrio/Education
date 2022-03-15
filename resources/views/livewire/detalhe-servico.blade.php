@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="courses-details-area blog-area pt-150 pb-140">
+    <div class="courses-details-area blog-area pt-150 pb-20">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
