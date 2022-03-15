@@ -16,7 +16,7 @@
     </div>
     <!-- Banner Area End -->
     <!-- Blog Start -->
-    <div class="courses-details-area blog-area pt-150 pb-140">
+    <div class="courses-details-area blog-area pt-150 pb-20">
         <div class="container">
             <div class="row">
                 @if($createData == false)
@@ -143,11 +143,11 @@
                             <h3>Aplica-se já</h3>
                             <hr>
                             <ul>
-                                <li><a href="{{url("inscricao")}}">Inscrições universitárias</a></li>
+                                <!-- <li><a href="{{url("inscricao")}}">Inscrições universitárias</a></li>
                                 <li><a href="{{url("bolsa")}}">Bolsas de Estudos</a></li>
                                 <li><a href="{{url("online")}}">Cursos Online</a></li>
                                 <li><a href="{{url("fundacao")}}">Ano de Fundação</a></li>
-                                <li><a href="#">Prdução de CV</a></li>
+                                <li><a href="#">Prdução de CV</a></li> -->
                             </ul>
                         </div>
                     </div>
