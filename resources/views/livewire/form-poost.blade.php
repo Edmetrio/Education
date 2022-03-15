@@ -169,7 +169,7 @@
                                 @foreach($poost as $s)
                                 <tr>
                                     <td>{{ $s->nome }}</td>
-                                    <td><img class="img-fluid" src="{{asset('storage')}}/{{$s->icon}}" style="width: 30px; text-align: center;" /></td>
+                                    <td><img class="img-fluid" src="{{asset('../storage/app/public')}}/{{$s->icon}}" style="width: 30px; text-align: center;" /></td>
                                     <td>{{ $s->descricao }}</td>
                                     <td>{{ $s->created_at->diffForhumans() }}</td>
                                     <td>
