@@ -66,117 +66,42 @@
                             </div>
 
                             <form>
-                                <!-- <div class="row setup-content {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1"> -->
                                 <div class="row setup-content {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1">
+                                    <div class="col-xs-12">
+                                        <div class="col-md-12">
+                                            <h3> Step 3</h3>
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Nome:</td>
+                                                    <td><strong>{{$pessoa->nome}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    
+                                                    <td>Sexo:</td>
+                                                    <td><strong>{{$pessoa->sexos->nome}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nacionalidade:</td>
+                                                    <td><strong></strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nascimento:</td>
+                                                    <td><strong>{{ $pessoa->nascimento}}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Número do Passaporte:</td>
+                                                    <td><strong>{{ $pessoa->passaporte }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>E-mail:</td>
+                                                    <td><strong>{{ $pessoa->email }}</strong></td>
+                                                </tr>
+                                            </table>
 
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Grau</strong>
-                                            <select class="form-control" wire:model="grau_id">
-                                                <option>Seleccione o Grau</option>
-                                                @foreach($grau as $s)
-                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('grau_id') <span class="text-danger">{{ $message }}</span> @enderror
+                                            <button class="btn btn-success btn-lg pull-right" wire:click="submitForm" type="button">Finish!</button>
+                                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(2)">Back</button>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Cursos :</strong>
-                                            <input type="curso" wire:model="curso" class="form-control" placeholder="Nome">
-                                            @error('curso') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Intake:</strong><br>
-                                            @foreach($intake as $s)
-                                            <label class="radio-inline"><input type="radio" wire:model="intake_id" value="{{ $s->id }}" {{{ $intake_id == $s->id ? "checked" : "" }}}> {{$s->nome}} </label>
-                                            @endforeach
-                                            @error('intake_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Pacote:</strong>
-
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead class="thead-dark">
-                                                        <tr>
-                                                            @foreach($pacotes->pacotes as $s)
-                                                            <th scope="col">{{ $s->nome }}</th>
-                                                            @endforeach
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            @foreach($pacotes->pacotes as $s)
-                                                            <td>
-                                                                <label class="radio-inline"><input type="radio" wire:model="pacote_id" value="{{ $s->id }}" {{{ $pacote_id == $s->id ? "checked" : "" }}}> {{$s->valor}} </label>
-                                                            </td>
-                                                            @endforeach
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            @error('pacote_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-10">
-                                        <div class="form-group">
-                                            <strong>Orçamento :</strong>
-                                            <input type="number" wire:model="orcamento" class="form-control" placeholder="Nome">
-                                            @error('orcamento') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group">
-                                            <strong>Moeda:</strong>
-                                            <select class="form-control" wire:model="moeda_id">
-                                                @foreach($moeda as $s)
-                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('moeda_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-10">
-                                        <div class="form-group">
-                                            <strong>País de Interesse:</strong>
-                                            <select class="form-control" wire:model="pais_id">
-                                                @foreach($pais as $s)
-                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('pais_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <div class="form-group">
-                                            <br />
-                                            <input type="number" wire:model="" class="form-control" placeholder="Nome">
-                                            @error('moeda_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Idioma de Proficiencia</strong>
-                                            <select class="form-control" wire:model="idioma_id">
-                                                <option>Seleccione o Idioma</option>
-                                                @foreach($idioma as $s)
-                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('idioma_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" wire:click="ThirdStepSubmit">Next</button>
-                                        <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(2)">Back</button>
-                                    </div>
-
                                     <!-- <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Nome:</strong>
@@ -405,25 +330,37 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong>Intake:</strong>
-                                            <select class="form-control" wire:model="intake_id">
-                                                <option>Seleccione o Pais</option>
-                                                @foreach($intake as $s)
-                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
-                                                @endforeach
-                                            </select>
+                                            <strong>Intake:</strong><br>
+                                            @foreach($intake as $s)
+                                            <label class="radio-inline"><input type="radio" wire:model="intake_id" value="{{ $s->id }}" {{{ $intake_id == $s->id ? "checked" : "" }}}> {{$s->nome}} </label>
+                                            @endforeach
                                             @error('intake_id') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Pacote:</strong>
-                                            <select class="form-control" wire:model="pacote_id">
-                                                <option>Seleccione o Pacote</option>
-                                                @foreach($pacote as $s)
-                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
-                                                @endforeach
-                                            </select>
+
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            @foreach($pacotes->pacotes as $s)
+                                                            <th scope="col">{{ $s->nome }}</th>
+                                                            @endforeach
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            @foreach($pacotes->pacotes as $s)
+                                                            <td>
+                                                                <label class="radio-inline"><input type="radio" wire:model="pacote_id" value="{{ $s->id }}" {{{ $pacote_id == $s->id ? "checked" : "" }}}> {{$s->valor}} </label>
+                                                            </td>
+                                                            @endforeach
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                             @error('pacote_id') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
@@ -445,28 +382,48 @@
                                             @error('moeda_id') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="col-xs-12 col-sm-12 col-md-10">
                                         <div class="form-group">
                                             <strong>País de Interesse:</strong>
-                                            <option>Seleccione o Pais</option>
-                                            <select class="form-control" wire:model="pais_id">
+                                            <select class="form-control" wire:model="pais_id.0">
                                                 @foreach($pais as $s)
                                                 <option value="{{ $s->id }}">{{ $s->nome }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('pais_id') <span class="text-danger">{{ $message }}</span> @enderror
+                                            @error('pais_id.0') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
+
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="col-xs-12 col-sm-1 col-md-1 pt-12">
+                                        <button class="btn text-white btn-info btn-sm" wire:click.prevent="add({{$i}})" style="margin-bottom: 20%;">+</button>
+                                    </div>
+
+                                    @foreach($inputs as $key => $value)
+                                    <div class="col-xs-12 col-sm-12 col-md-10">
                                         <div class="form-group">
-                                            <strong>Idioma de Proficiencia</strong>
-                                            <select class="form-control" wire:model="idioma_id">
-                                                <option>Seleccione o Idioma</option>
-                                                @foreach($idioma as $s)
+                                            <strong>País de Interesse:</strong>
+                                            <select class="form-control" wire:model="pais_id.{{ $value }}">
+                                                @foreach($pais as $s)
                                                 <option value="{{ $s->id }}">{{ $s->nome }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('idioma_id') <span class="text-danger">{{ $message }}</span> @enderror
+                                            @error('pais_id.'.$value) <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
+                                            <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">-</button>
+                                        </div>
+                                    </div>
+                                    @endforeach
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Idioma de Proficiencia</strong>
+                                            @foreach($idioma as $s)
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="{{ $s->id }}" wire:model="idiomas_id.{{ $s->id }}">{{ $s->nome }}</label>
+                                            </div>
+                                            @endforeach
+                                            @error('idiomas_id') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -476,46 +433,42 @@
                                 </div>
 
                                 <div class="row setup-content {{ $currentStep != 4 ? 'displayNone' : '' }}" id="step-4">
-                                    <div class="col-xs-12">
-                                        <div class="col-md-12">
-                                            <h3> Step 3</h3>
-
-                                            <table class="table">
-                                                <tr>
-                                                    <td>Pessoa Id:</td>
-                                                    <td><strong>{{$pessoa_id}}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nome do Candidato:</td>
-                                                    <td><strong>{{$nome}}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sexo:</td>
-                                                    <td><strong>{{$sexo_id}}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nacionalidade:</td>
-                                                    <td><strong>{{$nacionalidade}}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Escola:</td>
-                                                    <td><strong>{{$escola}}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Término:</td>
-                                                    <td><strong>{{$termino}}</strong></td>
-                                                </tr>
-                                            </table>
-
-                                            <button class="btn btn-success btn-lg pull-right" wire:click="submitForm" type="button">Finish!</button>
-                                            <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(3)">Back</button>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Cópia do Passaporte:</strong>
+                                            <input type="file" wire:model="passaportes" class="form-control" placeholder="Nome">
+                                            @error('passaportes') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Certificado/ Declaração de notas:</strong>
+                                            <input type="file" wire:model="certificados" class="form-control" placeholder="Nome">
+                                            @error('certificados') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Comprovativo de pagamento:</strong>
+                                            <input type="file" wire:model="comprovativos" class="form-control" placeholder="Nome">
+                                            @error('comprovativos') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Outros Documentos:</strong>
+                                            <input type="file" wire:model="outros" class="form-control" placeholder="Nome">
+                                            @error('outros') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" wire:click="submitForm">Next</button>
+                                        <button class="btn btn-danger nextBtn btn-lg pull-right" type="button" wire:click="back(3)">Back</button>
                                     </div>
                                 </div>
 
 
-                                <div class="row setup-content {{ $currentStep != 5 ? 'displayNone' : '' }}" id="step-5">
-                                    <!-- @if($showData == true) -->
+                                <div class="row setup-content {{ $currentStep != 6 ? 'displayNone' : '' }}" id="step-5">
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="col-md-12">
@@ -531,7 +484,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- @endif -->
                                 </div>
                             </form>
                         </div>
