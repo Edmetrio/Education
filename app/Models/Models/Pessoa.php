@@ -16,4 +16,11 @@ class Pessoa extends Model
 
     protected $table = 'pessoa';
     protected $fillable = ['sexo_id','telefone','nome','nascimento','passaporte','email'];
+
+    public function sexos()
+    {
+        return $this->hasOne(Sexo::class, 'id', 'sexo_id');
+    }
+    public function academic
 }
+
