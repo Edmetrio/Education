@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Models\Academica;
+use App\Models\Models\Anexos;
 use App\Models\Models\Exame;
 use App\Models\Models\Grau;
 use App\Models\Models\Idioma;
@@ -11,6 +12,7 @@ use App\Models\Models\Itemcurso;
 use App\Models\Models\Itemexame;
 use App\Models\Models\Itemidioma;
 use App\Models\Models\Itemnacionalidade;
+use App\Models\Models\Itempais;
 use App\Models\Models\Moeda;
 use App\Models\Models\Nacionalidade;
 use App\Models\Models\Pacote;
@@ -20,18 +22,21 @@ use App\Models\Models\Sexo;
 use App\Models\Models\Superior;
 use App\Models\Servico;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Candidatos extends Component
 {
+    use WithFileUploads;
     public $showData = false;
     public $currentStep = 1;
     public $nome, $sexo_id, $nacionalidade_id, $nascimento, $passaporte, $telefone, $email;
     public $pessoa_id, $escola, $termino, $pais_id, $certificado, $idioma_id, $exame_id, $data, $nota;
     public $grau_id, $curso, $pacote_id, $moeda_id, $orcamento, $intake_id;
-
+    public $passaportes, $certificados, $comprovativos, $outros;
     public $selectedExame = NULL;
 
     public $servico_id = '3b719c3b-2bd8-494d-a5d5-a3ef8aa288d3';
+    public $idiomas_id;
 
     public $nao = false;
     public $ainda = false;
@@ -43,6 +48,7 @@ class Candidatos extends Component
     public $updateMode = false;
     public $inputs = [];
     public $i = 1;
+
 
     public function mount()
     {
@@ -58,7 +64,8 @@ class Candidatos extends Component
         $this->pacote = Pacote::orderBy('created_at', 'desc')->get();
         $this->moeda = Moeda::orderBy('created_at', 'desc')->get();
 
-        
+        $this->pessoa = Pessoa::with('sexos')->find('04cfd9e3-bbe9-4c86-92c0-677b3deed7ee');
+        /* dd($this->pessoa); */
     }
 
     public function render()
@@ -70,8 +77,7 @@ class Candidatos extends Component
 
     public function updatedSelectedExame($exame)
     {
-        if(!is_null($exame))
-        {
+        if (!is_null($exame)) {
             if ($exame === 'nao') {
                 $this->nao = true;
                 $this->ainda = false;
@@ -87,7 +93,6 @@ class Candidatos extends Component
             } else {
                 # code...
             }
-            
         }
     }
 
@@ -102,6 +107,7 @@ class Candidatos extends Component
     {
         unset($this->inputs[$i]);
     }
+
 
     public function firstStepSubmit()
     {
@@ -134,23 +140,43 @@ class Candidatos extends Component
             'pais_id' => 'required',
             'certificado' => 'required',
             'idioma_id' => 'required',
-            'exame_id' => 'required'
         ]);
         $this->currentStep = 3;
     }
 
     public function ThirdStepSubmit()
     {
-        $validatedData = $this->validate([
-            'grau_id' => 'required',
-            'curso' => 'required',
-            'pacote_id' => 'required',
-            'moeda_id' => 'required',
-            'orcamento' => 'required'
-        ]);
+        $validatedData = $this->validate(
+            [
+                'grau_id' => 'required',
+                'curso' => 'required',
+                'pacote_id' => 'required',
+                'moeda_id' => 'required',
+                'orcamento' => 'required',
+                'pais_id.0' => 'required',
+                'pais_id.*' => 'required',
+            ],
+            [
+                'pais_id.0.required' => 'Seleccione o pais',
+                'pais_id.*.required' => 'Seleccione o Pais',
+            ]
+        );
+
         $this->currentStep = 4;
     }
 
+    public function FourthStepSubmit()
+    {
+        $validatedDataAnexo = $this->validate([
+            'passaportes' => 'required|mimes:pdf,xlx,csv,jpeg,png,jpg,gif,svg|max:2048',
+            'certificados' => 'required|mimes:pdf,xlx,csv,jpeg,png,jpg,gif,svg|max:2048',
+            'comprovativos' => 'required|mimes:pdf,xlx,csv,jpeg,png,jpg,gif,svg|max:2048',
+            'outros' => 'required|mimes:pdf,xlx,csv,jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $this->currentStep = 5;
+    }
+
+  
     public function submitForm()
     {
         $pessoa = Pessoa::create([
@@ -188,29 +214,47 @@ class Candidatos extends Component
                 'data' => $this->data
             ]);
         }
-        
+
+        //Aqui nao
         /* foreach ($this->idioma_id as $i)
         {
             Itemidioma::create(['idioma_id' => $i, 'academica_id' => $academica->id]);
         } */
 
-        Superior::create([
+        $superior = Superior::create([
             'pessoa_id' => $pessoa->id,
             'grau_id' => $this->grau_id,
             'curso' => $this->curso,
             'pacote_id' => $this->pacote_id,
             'orcamento' => $this->orcamento,
             'moeda_id' => $this->moeda_id,
-
         ]);
-
+        foreach ($this->pais_id as $key => $value) {
+            
+            Itempais::create(['pais_id' => $this->pais_id[$key], 'superior_id' => $superior->id]);
+        }
+        foreach ($this->idiomas_id as $id) 
+        {
+           Itemidioma::create([
+                'idioma_id' => $id, 
+                'superior_id' => $superior->id,
+           ]);
+        }
+        Anexos::create([
+            'pessoa_id' => $pessoa->id,
+            'passaporte' => $this->passaportes->store('files', 'public'),
+            'certificado' => $this->certificados->store('files', 'public'),
+            'comprovativo' => $this->comprovativos->store('files', 'public'),
+            'outros' => $this->outros->store('files', 'public'),
+        ]);
 
         $this->successMessage = "Candidatura feita";
 
         /* $this->clearForm();  */
 
-        $this->currentStep = 5;
+        $this->currentStep = 6;
         $this->showData = true;
+        
     }
 
     public function back($step)
