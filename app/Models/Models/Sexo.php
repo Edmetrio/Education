@@ -16,4 +16,9 @@ class Sexo extends Model
 
     protected $table = 'sexo';
     protected $fillable = ['nome'];
+
+    public function pessoas()
+    {
+        return $this->hasMany(Pessoa::class, 'sexo_id');
+    }
 }
