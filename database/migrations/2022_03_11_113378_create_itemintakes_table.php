@@ -19,8 +19,6 @@ class CreateItemintakesTable extends Migration
             $table->foreign('inscricao_id')->references('id')->on('inscricao')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('intake_id')->nullable();
             $table->foreign('intake_id')->references('id')->on('intake')->onDelete('cascade')->onUpdate('cascade');
-            $table->uuid('superior_id')->nullable();
-            $table->foreign('superior_id')->references('id')->on('superior')->onDelete('cascade')->onUpdate('cascade');
             $table->string('estado')->default('on')->nullable();
             $table->timestamps();
         });
