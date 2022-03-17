@@ -23,6 +23,8 @@ class CreateSuperiorsTable extends Migration
             $table->foreign('pacote_id')->references('id')->on('pacote')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('moeda_id')->nullable();
             $table->foreign('moeda_id')->references('id')->on('moeda')->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('intake_id')->nullable();
+            $table->foreign('intake_id')->references('id')->on('intake')->onDelete('cascade')->onUpdate('cascade');
             $table->string('curso')->nullable();
             $table->decimal('orcamento', 20,2 )->nullable();
             $table->string('estado')->default('on')->nullable();
