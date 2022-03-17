@@ -17,6 +17,8 @@ class CreateAcademicasTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('pessoa_id')->nullable();
             $table->foreign('pessoa_id')->references('id')->on('pessoa')->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('pais_id')->nullable();
+            $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade');
             $table->string('escola')->nullable();
             $table->string('termino')->nullable();
             $table->string('certificado')->nullable();
