@@ -17,8 +17,6 @@ class CreateItempaisTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('pais_id')->nullable();
             $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade');
-            $table->uuid('academica_id')->nullable();
-            $table->foreign('academica_id')->references('id')->on('academica')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('superior_id')->nullable();
             $table->foreign('superior_id')->references('id')->on('superior')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
