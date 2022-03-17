@@ -16,4 +16,9 @@ class Exame extends Model
 
     protected $table = 'exame';
     protected $fillable = ['nome','estado'];
+
+    public function academicas()
+    {
+        return $this->belongsToMany(Academica::class, 'itemexame');
+    }
 }
