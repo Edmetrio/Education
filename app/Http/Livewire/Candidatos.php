@@ -36,7 +36,7 @@ class Candidatos extends Component
     public $selectedExame = NULL;
 
     public $servico_id = '3b719c3b-2bd8-494d-a5d5-a3ef8aa288d3';
-    public $idiomas_id;
+    public $idiomas_id, $paiss_id;
 
     public $nao = false;
     public $ainda = false;
@@ -48,6 +48,7 @@ class Candidatos extends Component
     public $updateMode = false;
     public $inputs = [];
     public $i = 1;
+    public $put = [];
 
 
     public function mount()
@@ -64,7 +65,13 @@ class Candidatos extends Component
         $this->pacote = Pacote::orderBy('created_at', 'desc')->get();
         $this->moeda = Moeda::orderBy('created_at', 'desc')->get();
 
-        $this->pessoa = Pessoa::with('sexos')->find('04cfd9e3-bbe9-4c86-92c0-677b3deed7ee');
+        /* $this->pessoa = Pessoa::with('sexos','nacionalidades','academicas')->find('04cfd9e3-bbe9-4c86-92c0-677b3deed7ee');
+        $this->academica = Academica::with('exames')->where('pessoa_id', '04cfd9e3-bbe9-4c86-92c0-677b3deed7ee')->get(); */
+        /* dd($this->academica); */
+        /* $this->exames = Exame::with('academicas.pessoas')->get(); */
+        /* dd($this->exames); */
+
+        $this->pessoa = Pessoa::with('academicas.exames','sexos','nacionalidades')->find('cbfb4d2e-5763-4442-a068-70f8946bef31');
         /* dd($this->pessoa); */
     }
 
@@ -103,9 +110,21 @@ class Candidatos extends Component
         array_push($this->inputs, $i);
     }
 
+    public function addd($i)
+    {
+        $i = $i + 1;
+        $this->i = $i;
+        array_push($this->put, $i);
+    }
+
     public function remove($i)
     {
         unset($this->inputs[$i]);
+    }
+
+    public function removee($i)
+    {
+        unset($this->put[$i]);
     }
 
 
@@ -137,9 +156,9 @@ class Candidatos extends Component
         $validatedData = $this->validate([
             'escola' => 'required',
             'termino' => 'required',
-            'pais_id' => 'required',
+            'paiss_id' => 'required',
             'certificado' => 'required',
-            'idioma_id' => 'required',
+            'idiomas_id' => 'required',
         ]);
         $this->currentStep = 3;
     }
@@ -153,6 +172,7 @@ class Candidatos extends Component
                 'pacote_id' => 'required',
                 'moeda_id' => 'required',
                 'orcamento' => 'required',
+                'intake_id' => 'required',
                 'pais_id.0' => 'required',
                 'pais_id.*' => 'required',
             ],
@@ -191,15 +211,14 @@ class Candidatos extends Component
         {
             Itemnacionalidade::create(['pessoa_id' => $pessoa->id, 'nacionalidade_id' => $this->nacionalidade_id[$key]]);
         }
-
+        /* dd($this->paiss_id); */
         $academica = Academica::create([
             'pessoa_id' => $pessoa->id,
             'escola' => $this->escola,
             'termino' => $this->termino,
-            'pais_id' => $this->pais_id,
+            'pais_id' => $this->paiss_id,
             'certificado' => $this->certificado,
         ]);
-        
         
         if ($this->selectedExame === 'ainda') {
             Itemexame::create([
@@ -214,12 +233,11 @@ class Candidatos extends Component
                 'data' => $this->data
             ]);
         }
-
         //Aqui nao
-        /* foreach ($this->idioma_id as $i)
+        foreach ($this->idiomas_id as $i)
         {
             Itemidioma::create(['idioma_id' => $i, 'academica_id' => $academica->id]);
-        } */
+        }
 
         $superior = Superior::create([
             'pessoa_id' => $pessoa->id,
@@ -228,6 +246,7 @@ class Candidatos extends Component
             'pacote_id' => $this->pacote_id,
             'orcamento' => $this->orcamento,
             'moeda_id' => $this->moeda_id,
+            'intake_id' => $this->intake_id,
         ]);
         foreach ($this->pais_id as $key => $value) {
             
@@ -249,7 +268,6 @@ class Candidatos extends Component
         ]);
 
         $this->successMessage = "Candidatura feita";
-
         /* $this->clearForm();  */
 
         $this->currentStep = 6;
