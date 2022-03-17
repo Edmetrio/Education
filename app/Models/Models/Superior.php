@@ -15,5 +15,5 @@ class Superior extends Model
     protected $guarded = [];
 
     protected $table = 'superior';
-    protected $fillable = ['pessoa_id','grau_id','pacote_id','moeda_id','curso','orcamento'];
+    protected $fillable = ['pessoa_id','grau_id','pacote_id','moeda_id','intake_id','curso','orcamento'];
 }
