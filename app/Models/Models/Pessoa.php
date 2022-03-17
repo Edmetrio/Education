@@ -21,6 +21,20 @@ class Pessoa extends Model
     {
         return $this->hasOne(Sexo::class, 'id', 'sexo_id');
     }
-    public function academic
+    
+    public function nacionalidades()
+    {
+        return $this->belongsToMany(Nacionalidade::class, 'itemnacionalidade');
+    }
+    
+    public function academicas()
+    {
+        return $this->hasMany(Academica::class, 'pessoa_id');
+    }
+
+    public function itemexames()
+    {
+        return $this->belongsToMany(Itemexame::class, 'academica');
+    }
 }
 
