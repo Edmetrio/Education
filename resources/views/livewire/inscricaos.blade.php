@@ -60,6 +60,45 @@
                                             @error('universidade') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-11">
+                                        <div class="form-group">
+                                            <strong>Intake:</strong>
+                                            <select class="form-control" wire:model="intake_id.0">
+                                                <option>Seleccione o Intake</option>
+                                                @foreach($intake as $s)
+                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('intake_id.0') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-1 col-md-1 mt-12">
+                                        <div class="form-group">
+                                            <strong>.</strong>
+                                            <button class="btn text-white btn-info btn-sm" wire:click.prevent="add({{$i}})" style="margin-bottom: 20%;">+</button>
+                                        </div>
+                                    </div>
+
+                                    @foreach($inputs as $key => $value)
+                                    <div class="col-xs-12 col-sm-12 col-md-10">
+                                        <div class="form-group">
+                                            <strong>Intake:</strong>
+                                            <select class="form-control" wire:model="intake_id.{{ $value }}">
+                                                <option>Seleccione o Intake</option>
+                                                @foreach($intake as $s)
+                                                <option value="{{ $s->id }}">{{ $s->nome }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('intake_id.'.$value) <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <strong>.</strong>
+                                            <button class="btn btn-danger btn-sm" wire:click.prevent="remove({{$key}})">-</button>
+                                        </div>
+                                    </div>
+                                    @endforeach
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Abertura:</strong>
@@ -135,7 +174,7 @@
                                             </select>
                                             @error('edit_pais_id') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
-                                    </div>  
+                                    </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Universidade:</strong>
@@ -143,6 +182,7 @@
                                             @error('edit_universidade') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                     </div>
+
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>Abertura:</strong>
@@ -203,6 +243,32 @@
                     </div>
                 </div>
 
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <strong>Pais:</strong>
+                        <select class="form-control" wire:model="selectedPais">
+                            <option value="">Seleccione o País</option>
+                            @foreach($pais as $s)
+                            <option value="{{ $s->id }}">{{ $s->nome }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                @if (!is_null($selectedPais))
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <strong>Universidade:</strong>
+                        <select class="form-control" wire:model="">
+                            <option value="">Seleccione o País</option>
+                            @foreach($universidades as $s)
+                            <option value="{{ $s->id }}">{{ $s->universidade }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                @endif
+
                 @if($showData == true)
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -240,6 +306,46 @@
             </div>
         </div>
         <!-- Blog End -->
+    </div>
+
+    <div class="course-area pt-150 pb-1">
+        <div class="container">
+            <!-- @if (!is_null($selectedPais)) -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="course-title">
+                        <h3>Procurar Curso</h3>
+                    </div>
+                    <div class="course-form">
+                        <form id="search" action="#">
+                            <input type="search" wire:model="search" placeholder="Procurar..." />
+                            <button type="submit">Procurar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                @foreach($universidades as $u)
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-course mb-70">
+                        <div class="course-content">
+                            <h6>{{ $u->universidade }}</h6>
+                            <strong>Intakes:</strong>
+                            @foreach($u->intakes as $i)
+                            {{ $i->nome }} |
+                            @endforeach
+                            <p><strong>Abertura:</strong> {{ $u->abertura }}<br />
+                            <strong>Fecho:</strong> {{ $u->fecho }}</p>
+                            <a class="default-btn" href="{{ $u->link }}">Visitar</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <!-- @endif -->
+        </div>
     </div>
 
 </div>
