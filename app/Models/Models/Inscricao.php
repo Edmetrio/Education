@@ -16,12 +16,7 @@ class Inscricao extends Model
     protected $guarded = [];
 
     protected $table = 'inscricao';
-    protected $fillable = ['user_id','pais_id','universidade','abertura','fecho','link','anexo', 'estado'];
-
-    public function entidades()
-    {
-        return $this->hasOne(Entidade::class, 'id', 'entidade_id');
-    }
+    protected $fillable = ['user_id', 'pais_id', 'universidade', 'abertura', 'fecho', 'link', 'anexo', 'estado'];
 
     public function pais()
     {
@@ -33,8 +28,29 @@ class Inscricao extends Model
         return $this->hasOne(User::class, 'id', 'users_id');
     }
 
+    //Nova Relação
     public function itemcursos()
     {
         return $this->hasMany(Itemcurso::class, 'inscricao_id');
+    }
+
+    public function cursos()
+    {
+        return $this->belongsToMany(Curso::class, 'itemcurso');
+    }
+
+    public function intakes()
+    {
+        return $this->belongsToMany(Intake::class, 'itemintake');
+    }
+
+    public function graus()
+    {
+        return $this->belongsToMany(Grau::class, 'itemcurso');
+    }
+
+    public function entidades()
+    {
+        return $this->belongsToMany(Entidade::class, 'itemcurso');
     }
 }
