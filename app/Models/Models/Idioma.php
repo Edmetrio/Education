@@ -16,4 +16,9 @@ class Idioma extends Model
 
     protected $table = 'idioma';
     protected $fillable = ['nome','estado'];
+
+    public function superiors()
+    {
+        return $this->belongsToMany(Superior::class, 'itemidioma');
+    }
 }
