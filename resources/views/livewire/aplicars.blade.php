@@ -136,7 +136,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <button wire:click.prevent="store()" type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                <button wire:click.prevent="store()" class="default-btn" type="submit"><span>Enviar</span></button> 
                             </form>
                         </div>
                     </div>
