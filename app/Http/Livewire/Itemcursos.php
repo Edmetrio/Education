@@ -114,6 +114,9 @@ class Itemcursos extends Component
         $this->grau = Grau::orderBy('created_at', 'desc')->get();
         $this->entidade = Entidade::orderBy('created_at', 'desc')->get();
         $this->moeda = Moeda::orderBy('created_at', 'desc')->get();
+
+        $this->universidades = Inscricao::with('cursos','itemcursos','intakes')->get();
+        /* dd($this->universidades); */
     }
 
     public function render()
