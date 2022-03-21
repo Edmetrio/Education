@@ -36,5 +36,20 @@ class Pessoa extends Model
     {
         return $this->belongsToMany(Itemexame::class, 'academica');
     }
+
+    public function itemidiomas()
+    {
+        return $this->belongsToMany(Itemidioma::class, 'academica');
+    }
+
+    public function itemidiomass()
+    {
+        return $this->belongsToMany(Itemidioma::class, 'superior');
+    }
+
+    public function superiors()
+    {
+        return $this->hasMany(Superior::class, 'pessoa_id');
+    }
 }
 
