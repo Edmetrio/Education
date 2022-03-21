@@ -27,4 +27,14 @@ class Academica extends Model
     {
         return $this->belongsTo(Pessoa::class, 'pessoa_id', 'id');
     }
+
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class, 'pais_id', 'id');
+    }
+
+    public function idiomas()
+    {
+        return $this->belongsToMany(Idioma::class, 'itemidioma');
+    }
 }
