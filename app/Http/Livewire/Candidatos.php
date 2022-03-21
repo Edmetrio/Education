@@ -68,11 +68,23 @@ class Candidatos extends Component
         /* $this->pessoa = Pessoa::with('sexos','nacionalidades','academicas')->find('04cfd9e3-bbe9-4c86-92c0-677b3deed7ee');
         $this->academica = Academica::with('exames')->where('pessoa_id', '04cfd9e3-bbe9-4c86-92c0-677b3deed7ee')->get(); */
         /* dd($this->academica); */
-        /* $this->exames = Exame::with('academicas.pessoas')->get(); */
-        /* dd($this->exames); */
+        /* $this->exames = Exame::with('academicas.pessoas')->get(); 
+        dd($this->exames); */ 
+        $up = Pessoa::latest()->first();
+        $this->pessoa = Pessoa::with('academicas.pais','academicas.exames','academicas.idiomas',
+        'superiors.idiomas','superiors.pessoas','superiors.graus','superiors.pacotes',
+        'superiors.moedas','superiors.intakes','superiors.pais','sexos',
+        'nacionalidades')->find($up->id);
 
-        $this->pessoa = Pessoa::with('academicas.exames','sexos','nacionalidades')->find('cbfb4d2e-5763-4442-a068-70f8946bef31');
+        
+        /* dd($up->id); */
+        
         /* dd($this->pessoa); */
+        /* 
+        $this->idiomas = Pessoa::with('superiors.idiomas')->get();
+        dd($this->idiomas); */
+
+        
     }
 
     public function render()
