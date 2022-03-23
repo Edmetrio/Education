@@ -16,6 +16,6 @@ class Bolsas extends Component
     {
         $this->servico = Servico::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.bolsas')->layout('layouts.app', compact('sr'));
+        return view('livewire.bolsas')->layout('layouts.appp', compact('sr'));
     }
 }
