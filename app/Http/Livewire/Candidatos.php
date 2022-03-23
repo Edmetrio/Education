@@ -91,7 +91,7 @@ class Candidatos extends Component
     {
         $pacotes = Servico::with('pacotes')->find($this->servico_id);
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.candidatos', compact('pacotes'))->layout('layouts.app', compact('sr'));
+        return view('livewire.candidatos', compact('pacotes'))->layout('layouts.appp', compact('sr'));
     }
 
     public function updatedSelectedExame($exame)
