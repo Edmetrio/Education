@@ -46,6 +46,6 @@ class Aplicars extends Component
     public function render()
     {
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.aplicars')->layout('layouts.app', compact('sr'));;
+        return view('livewire.aplicars')->layout('layouts.appp', compact('sr'));;
     }
 }
