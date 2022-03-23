@@ -20,6 +20,6 @@ class Academicas extends Component
     public function render()
     {
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.academicas')->layout('layouts.app', compact('sr'));
+        return view('livewire.academicas')->layout('layouts.appp', compact('sr'));
     }
 }
