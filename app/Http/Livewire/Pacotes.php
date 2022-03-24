@@ -87,6 +87,6 @@ class Pacotes extends Component
     {
         $this->pacote = Pacote::orderBy('created_at', 'desc')->with('servicos')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.pacotes')->layout('layouts.app', compact('sr'));
+        return view('livewire.pacotes')->layout('layouts.appp', compact('sr'));
     }
 }
