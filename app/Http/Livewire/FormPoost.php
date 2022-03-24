@@ -82,7 +82,7 @@ class FormPoost extends Component
         $this->createData = false;
         $this->updateData = false;
         $this->resetInput();
-        session()->flash('status', 'Poost criado com sucesso!');    
+        session()->flash('status', 'Poost Actualizado com sucesso!');    
     }
 
     public function delete($id)
@@ -101,6 +101,6 @@ class FormPoost extends Component
     {
         $this->poost = Poost::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.form-poost')->layout('layouts.app', compact('sr'));
+        return view('livewire.form-poost')->layout('layouts.appp', compact('sr'));
     }
 }
