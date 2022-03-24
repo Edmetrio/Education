@@ -105,6 +105,6 @@ class Formulario extends Component
     {
         $sr = Servico::orderBy('created_at', 'desc')->get();
         $this->servico = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.formulario')->layout('layouts.app', compact('sr'));
+        return view('livewire.formulario')->layout('layouts.appp', compact('sr'));
     }
 }
