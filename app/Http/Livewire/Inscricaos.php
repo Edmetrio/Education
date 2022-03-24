@@ -171,7 +171,7 @@ class Inscricaos extends Component
         /* dd($universidade); */
         
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.inscricaos', compact('inscricao','universidade'))->layout('layouts.app', compact('sr'));
+        return view('livewire.inscricaos', compact('inscricao','universidade'))->layout('layouts.appp', compact('sr'));
     }
 
     public function updatedSelectedPais($pais_id)
