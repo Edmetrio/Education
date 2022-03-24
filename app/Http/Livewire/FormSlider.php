@@ -106,6 +106,6 @@ class FormSlider extends Component
     {
         $this->slider = Slider::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.form-slider')->layout('layouts.app', compact('sr'));
+        return view('livewire.form-slider')->layout('layouts.appp', compact('sr'));
     }
 }
