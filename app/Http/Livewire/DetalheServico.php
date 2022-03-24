@@ -21,6 +21,6 @@ class DetalheServico extends Component
         $this->inscricao = Pacoteinscricao::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
         $poost = Poost::orderBy('created_at', 'desc')->paginate(4);
-        return view('livewire.detalhe-servico', compact('poost'))->layout('layouts.app', compact('sr'));
+        return view('livewire.detalhe-servico', compact('poost'))->layout('layouts.appp', compact('sr'));
     }
 }
