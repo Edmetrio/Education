@@ -125,6 +125,6 @@ class Itemcursos extends Component
         /* dd($this->cursoo); */
         $sr = Servico::orderBy('created_at', 'desc')->get();
         $this->item = Itemcurso::with('inscricaos', 'servicos', 'cursos', 'graus', 'entidades','moedas')->get();
-        return view('livewire.itemcursos')->layout('layouts.app', compact('sr'));
+        return view('livewire.itemcursos')->layout('layouts.appp', compact('sr'));
     }
 }
