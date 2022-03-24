@@ -10,6 +10,6 @@ class Sobres extends Component
     public function render()
     {
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.sobres')->layout('layouts.app', compact('sr'));
+        return view('livewire.sobres')->layout('layouts.appp', compact('sr'));
     }
 }
