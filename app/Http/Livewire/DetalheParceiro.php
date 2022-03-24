@@ -21,6 +21,6 @@ class DetalheParceiro extends Component
         $poost = Poost::orderBy('created_at', 'desc')->get();
         $parceiros = Parceiro::whereNotIn('id', [$this->parceiro->id])->orderBy('created_at', 'desc')->paginate(2);
         $servicos = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.detalhe-parceiro', compact('poost','parceiros','servicos'))->layout('layouts.app', compact('sr'));
+        return view('livewire.detalhe-parceiro', compact('poost','parceiros','servicos'))->layout('layouts.appp', compact('sr'));
     }
 }
