@@ -126,6 +126,6 @@ class FormParceiro extends Component
     {
         $this->parceiro = Parceiro::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.form-parceiro')->layout('layouts.app', compact('sr'));
+        return view('livewire.form-parceiro')->layout('layouts.appp', compact('sr'));
     }
 }
