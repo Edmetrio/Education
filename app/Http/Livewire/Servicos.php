@@ -16,6 +16,6 @@ class Servicos extends Component
     public function render()
     {
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.servicos')->layout('layouts.app', compact('sr'));
+        return view('livewire.servicos')->layout('layouts.appp', compact('sr'));
     }
 }
