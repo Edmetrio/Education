@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\Candidatura;
+use App\Mail\Teste;
 use App\Models\Models\Academica;
 use App\Models\Models\Anexos;
 use App\Models\Models\Exame;
@@ -21,6 +23,7 @@ use App\Models\Models\Pessoa;
 use App\Models\Models\Sexo;
 use App\Models\Models\Superior;
 use App\Models\Servico;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -50,9 +53,10 @@ class Candidatos extends Component
     public $i = 1;
     public $put = [];
 
-
-    public function mount()
+    public function mount($id)
     {
+        $this->pacotes = Servico::with('pacotes')->find($id);
+        /* dd($this->pacotes); */
         $this->sexo = Sexo::orderBy('created_at', 'desc')->get();
         $this->nacionalidade = Nacionalidade::orderBy('created_at', 'desc')->get();
 
@@ -70,28 +74,23 @@ class Candidatos extends Component
         /* dd($this->academica); */
         /* $this->exames = Exame::with('academicas.pessoas')->get(); 
         dd($this->exames); */ 
-        $up = Pessoa::latest()->first();
-        $this->pessoa = Pessoa::with('academicas.pais','academicas.exames','academicas.idiomas',
-        'superiors.idiomas','superiors.pessoas','superiors.graus','superiors.pacotes',
-        'superiors.moedas','superiors.intakes','superiors.pais','sexos',
-        'nacionalidades')->find($up->id);
-
         
-        /* dd($up->id); */
         
-        /* dd($this->pessoa); */
-        /* 
-        $this->idiomas = Pessoa::with('superiors.idiomas')->get();
-        dd($this->idiomas); */
 
         
     }
 
     public function render()
     {
-        $pacotes = Servico::with('pacotes')->find($this->servico_id);
+        /* $up = Pessoa::latest()->first();
+        $this->pessoa = Pessoa::with('academicas.pais','academicas.exames','academicas.idiomas',
+        'superiors.idiomas','superiors.pessoas','superiors.graus','superiors.pacotes',
+        'superiors.moedas','superiors.intakes','superiors.pais','sexos',
+        'nacionalidades')->find($up); */
+        
+        /* dd($this->pessoa); */
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.candidatos', compact('pacotes'))->layout('layouts.appp', compact('sr'));
+        return view('livewire.candidatos')->layout('layouts.appp', compact('sr'));
     }
 
     public function updatedSelectedExame($exame)
@@ -278,6 +277,9 @@ class Candidatos extends Component
             'comprovativo' => $this->comprovativos->store('files', 'public'),
             'outros' => $this->outros->store('files', 'public'),
         ]);
+
+        $detail = $pessoa;
+        Mail::to('info@firsteducation.edu.mz')->send(new Candidatura($detail));
 
         $this->successMessage = "Candidatura feita";
         /* $this->clearForm();  */
