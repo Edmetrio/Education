@@ -16,5 +16,5 @@ class Poost extends Model
     protected $guarded = [];
 
     protected $table = 'poost';
-    protected $fillable = ['nome','icon','descricao'];
+    protected $fillable = ['users_id','nome','icon','descricao'];
 }
