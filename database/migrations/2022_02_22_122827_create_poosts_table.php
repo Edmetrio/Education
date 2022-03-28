@@ -15,6 +15,8 @@ class CreatePoostsTable extends Migration
     {
         Schema::create('poost', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('users_id')->nullable();
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nome')->unique();
             $table->string('descricao')->nullable();
             $table->string('icon')->nullable();
