@@ -243,7 +243,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6">
+                <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Pais:</strong>
                         <select class="form-control" wire:model="selectedPais">
@@ -256,133 +256,81 @@
                 </div>
 
                 @if (!is_null($selectedPais))
-                <div class="col-xs-12 col-sm-12 col-md-6">
-                    <div class="form-group">
-                        <strong>Universidade:</strong>
-                        <select class="form-control" wire:model="">
-                            <option value="">Seleccione o País</option>
-                            @foreach($universidades as $s)
-                            <option value="{{ $s->id }}">{{ $s->universidade }}</option>
-                            @endforeach
-                        </select>
+                @foreach($universidades as $u)
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single-course mb-70">
+                            <div class="course-content">
+                                <h6>{{ $u->universidade }}</h6>
+                                <strong>Intakes:</strong>
+                                @foreach($u->intakes as $i)
+                                {{ $i->nome }} |
+                                @endforeach
+                                <p><strong>Abertura:</strong> {{ $u->abertura }}<br />
+                                    <strong>Fecho:</strong> {{ $u->fecho }}
+                                </p>
+                                <ul>
+                                    <li class="col-md-6 col-sm-6 col-xs-12">
+                                        <a class="default-btn" href="{{ $u->link }}">Visitar</a>
+                                    </li>
+                                    <li class="text-right">
+                                        <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
+                                        <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                @endforeach
                 @endif
 
                 @if($showData == true)
-                <!-- <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">País</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Icon</th>
-                                    <th scope="col">Link</th>
-                                    <th scope="col">Criação</th>
-                                    <th scope="col">Acções</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($inscricao as $s)
-                                <tr>
-                                    <td>{{ $s->pais->nome }}</td>
-                                    <td>{{ $s->universidade}}</td>
-                                    <td><img class="img-fluid" src="{{asset('storage')}}/{{$s->anexo}}" style="width: 30px; text-align: center;" /></td>
-                                    <td><a href="{{ $s->link }}"> {{ $s->link }}</a></td>
-                                    <td>{{ $s->created_at->diffForhumans() }}</td>
-                                    <td>
-                                        <button wire:click="edit('{{$s->id}}')"><i class="fas fa-edit"></i></button>
-                                        <button wire:click="delete('{{ $s->id }}')"><i class="fab fa-instagram"></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div> -->
-
                 <div class="row">
-                @foreach($inscricao as $u)
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-course mb-70">
-                        <div class="course-content">
-                            <h6>{{ $u->universidade }}</h6>
-                            <strong>Intakes:</strong>
-                            @foreach($u->intakes as $i)
-                            {{ $i->nome }} |
-                            @endforeach
-                            <p><strong>Abertura:</strong> {{ $u->abertura }}<br />
-                                <strong>Fecho:</strong> {{ $u->fecho }}
-                            </p>
-                            <ul>
-                                <li>
-                                    <a class="default-btn" href="{{ $u->link }}">Visitar</a>
-                                </li>
-                                <li>
-                                    <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
-                                    <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
-                                </li>
-                            </ul>
+                    <div class="col-xs-12">
+                        <div class="course-title">
+                            <h3>Procurar Curso</h3>
+                        </div>
+                        <div class="course-form">
+                            <form id="search" action="#">
+                                <input type="search" wire:model="search" placeholder="Procurar..." />
+                            </form>
                         </div>
                     </div>
+                    @foreach($inscricao as $u)
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single-course mb-70">
+                            <div class="course-content">
+                                <h6>{{ $u->universidade }}</h6>
+                                <strong>Intakes:</strong>
+                                @foreach($u->intakes as $i)
+                                {{ $i->nome }} |
+                                @endforeach
+                                <p><strong>Abertura:</strong> {{ $u->abertura }}<br />
+                                    <strong>Fecho:</strong> {{ $u->fecho }}
+                                </p>
+                                <ul>
+                                    <li class="col-md-6 col-sm-6 col-xs-12">
+                                        <a class="default-btn" href="{{ $u->link }}">Visitar</a>
+                                    </li>
+                                    <li class="text-right">
+                                        <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
+                                        <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    <div>
+                        {{$inscricao->links()}}
+                    </div>
                 </div>
-                @endforeach
-            </div>
                 @endif
                 <hr>
             </div>
         </div>
-        <!-- Blog End -->
     </div>
 
-    <div class="course-area pt-150 pb-1">
-        <div class="container">
-            <!-- @if (!is_null($selectedPais)) -->
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="course-title">
-                        <h3>Procurar Curso</h3>
-                    </div>
-                    <div class="course-form">
-                        <form id="search" action="#">
-                            <input type="search" wire:model="search" placeholder="Procurar..." />
-                            <button type="submit">Procurar</button>
-                        </form>
-                    </div>
 
-                </div>
-            </div>
-
-            <div class="row">
-                @foreach($universidades as $u)
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-course mb-70">
-                        <div class="course-content">
-                            <h6>{{ $u->universidade }}</h6>
-                            <strong>Intakes:</strong>
-                            @foreach($u->intakes as $i)
-                            {{ $i->nome }} |
-                            @endforeach
-                            <p><strong>Abertura:</strong> {{ $u->abertura }}<br />
-                                <strong>Fecho:</strong> {{ $u->fecho }}
-                            </p>
-                            <ul>
-                                <li>
-                                    <a class="default-btn" href="{{ $u->link }}">Visitar</a>
-                                </li>
-                                <li class="text-right col-mt-20">
-                                    <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        <!-- @endif -->
-    </div>
 </div>
 
 </div>
