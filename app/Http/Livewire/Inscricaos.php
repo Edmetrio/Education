@@ -167,13 +167,10 @@ class Inscricaos extends Component
 
     public function render()
     {
-        $inscricao = Inscricao::with('pais','intakes','graus')->where('universidade', 'like', '%'.$this->search.'%')->orderBy('created_at', 'desc')->get();
-        $universidade = Inscricao::with('pais','intakes','graus')
-        ->where('universidade', 'like', '%'.$this->search.'%')->get();
-        /* dd($universidade); */
+        $inscricao = Inscricao::with('pais','intakes','graus')->where('universidade', 'like', '%'.$this->search.'%')->orderBy('created_at', 'desc')->paginate(6);
         
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.inscricaos', compact('inscricao','universidade'))->layout('layouts.appp', compact('sr'));
+        return view('livewire.inscricaos', compact('inscricao'))->layout('layouts.appp', compact('sr'));
     }
 
     public function updatedSelectedPais($pais_id)
@@ -184,7 +181,8 @@ class Inscricaos extends Component
             ->where('universidade', 'like', '%'.$this->search.'%')->where('pais_id', $pais_id)
             ->orderBy('created_at', 'desc')->get();
             /* dd($this->universidades); */
-            /* $this->showData = false; */
+            $this->showData = false;
+            $this->createData = true;
         }
     }
 
