@@ -270,7 +270,7 @@
                 @endif
 
                 @if($showData == true)
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="thead-dark">
@@ -300,7 +300,35 @@
                             </tbody>
                         </table>
                     </div>
+                </div> -->
+
+                <div class="row">
+                @foreach($inscricao as $u)
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-course mb-70">
+                        <div class="course-content">
+                            <h6>{{ $u->universidade }}</h6>
+                            <strong>Intakes:</strong>
+                            @foreach($u->intakes as $i)
+                            {{ $i->nome }} |
+                            @endforeach
+                            <p><strong>Abertura:</strong> {{ $u->abertura }}<br />
+                                <strong>Fecho:</strong> {{ $u->fecho }}
+                            </p>
+                            <ul>
+                                <li>
+                                    <a class="default-btn" href="{{ $u->link }}">Visitar</a>
+                                </li>
+                                <li>
+                                    <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
+                                    <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                @endforeach
+            </div>
                 @endif
                 <hr>
             </div>
@@ -337,15 +365,24 @@
                             {{ $i->nome }} |
                             @endforeach
                             <p><strong>Abertura:</strong> {{ $u->abertura }}<br />
-                            <strong>Fecho:</strong> {{ $u->fecho }}</p>
-                            <a class="default-btn" href="{{ $u->link }}">Visitar</a>
+                                <strong>Fecho:</strong> {{ $u->fecho }}
+                            </p>
+                            <ul>
+                                <li>
+                                    <a class="default-btn" href="{{ $u->link }}">Visitar</a>
+                                </li>
+                                <li class="text-right col-mt-20">
+                                    <button wire:click="editProcesso('{{$u->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
-            <!-- @endif -->
         </div>
+        <!-- @endif -->
     </div>
+</div>
 
 </div>
