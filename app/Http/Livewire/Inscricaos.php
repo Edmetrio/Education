@@ -10,10 +10,12 @@ use App\Models\Servico;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Inscricaos extends Component
 {
     use WithFileUploads;
+    use WithPagination;
     public $user_id, $pais_id, $universidade, $abertura, $fecho, $link, $anexo, $intake_id;
     public $edit_id, $edit_user_id, $edit_pais_id, $edit_pais_nome, $edit_universidade, $edit_abertura, $edit_fecho, $edit_link, $edit_anexo, $old_anexo, $new_anexo;
 
