@@ -135,7 +135,7 @@
                 </div>
 
                 @if($showData == true)
-                <div class="col-md-12">
+<!--                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="thead-dark">
@@ -163,6 +163,43 @@
                             </tbody>
                         </table>
                     </div>
+                </div> -->
+
+                <div class="col-xs-12">
+                        <div class="course-title">
+                            <h3>Procurar Curso</h3>
+                        </div>
+                        <div class="course-form">
+                            <form id="search" action="#">
+                                <input type="search" wire:model="search" placeholder="Procurar..." />
+                            </form>
+                        </div>
+                    </div>
+                @foreach($curso as $s)
+                <div class="col-md-11 mt-20">
+                    <div class="single-event mb-10">
+<!--                         <div class="event-date">
+                            <img class="img-fluid" src="{{asset('../storage/app/public')}}/{{$s->icon}}" style="width: 100px; text-align: center;" />
+                        </div> -->
+                        <div class="event-content text-left">
+                            <div class="event-content-left pl-10">
+                                <h3>{{ $s->nome }}</h3>
+                                <ul>
+                                    <li>{{ $s->categorias->nome }}</li>
+                                </ul>
+                            </div>
+                            <div class="float-right mr-10">
+                                <ul class="event-content-righ">
+                                    <li><button wire:click="edit('{{$s->id}}')" class="default-btn text-right"><i class="fas fa-edit"></i></button></li>
+                                    <li class="float-right mt-3"><button wire:click="delete('{{ $s->id }}')" class="default-btn text-right"><i class="fas fa-trash"></i></button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                <div>
+                   {{$curso->links()}}
                 </div>
                 @endif
                 <hr>
