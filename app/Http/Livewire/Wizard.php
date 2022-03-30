@@ -16,7 +16,7 @@ class Wizard extends Component
     public function render()
     {
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.wizard')->layout('layouts.app', compact('sr'));
+        return view('livewire.wizard')->layout('layouts.appp', compact('sr'));
     }
 
     public function firstStepSubmit()

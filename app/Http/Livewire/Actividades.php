@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Actividades extends Component
 {
     use WithFileUploads;
+    use WithPagination;
     //Processo
     public $users_id, $situacao_id, $pessoa_id, $tipo_id, $nome, $descricao, $anexo;
     public $edit_users_id, $edit_situacao_id, $edit_pessoa_id, $old_anexo, $new_anexo, $situacao, $pessoa;
@@ -261,12 +263,12 @@ class Actividades extends Component
 
     public function render()
     {
-        $actividade = Actividade::orderBy('created_at', 'desc')->get();
-        $this->poost = Poost::orderBy('created_at', 'desc')->get();
+        $actividade = Actividade::orderBy('created_at', 'desc')->paginate(5);
+        $poost = Poost::orderBy('created_at', 'desc')->paginate(5);
         $this->pessoa = Pessoa::orderBy('created_at', 'desc')->get();
         $this->situacao = Situacao::orderBy('created_at', 'desc')->get();
         $this->movimento = Movimento::orderBy('created_at', 'desc')->get();
-        $conta = Conta::with('movimentos','users')->orderBy('created_at', 'desc')->get();
+        $conta = Conta::with('movimentos','users')->orderBy('created_at', 'desc')->paginate(5);
         $saldo = Saldo::all();
         $total = 0.0;
         foreach($saldo as $s)
@@ -275,7 +277,7 @@ class Actividades extends Component
         }
         $this->total = $total;
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.actividades', compact('actividade','conta'))->layout('layouts.appp', compact('sr'));
+        return view('livewire.actividades', compact('actividade','conta','poost'))->layout('layouts.appp', compact('sr'));
     }
 
     public function updatedSelectedTipo($tipo_id)

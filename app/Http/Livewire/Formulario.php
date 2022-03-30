@@ -75,6 +75,9 @@ class Formulario extends Component
                 File::delete($destination);
             }
             $filename = $this->new_icon->store('files', 'public');
+            /* $destino = 'storage/files';
+            $this->new_icon->move($destino, $filename); */
+
         }
         $validateDate['nome'] = $this->edit_nome;
         $validateDate['descricao'] = $this->edit_descricao;

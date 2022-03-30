@@ -95,6 +95,7 @@
                             <hr>
 
                             <div class="single-course-left">
+                           
                                 <h3>Confirmação</h3><br>
                                 <p class="margin">
                                     Depois de reunir todos documentos solicitados, o próximo passo será de aplicar-se ou inscrever-se
@@ -106,7 +107,7 @@
                         </div>
                         <div class="reply-area">
                             <form id="contact-form" action="http://preview.hasthemes.com/eduhome/mail.php" method="post">
-                                <a class="reply-btn" href="https://forms.gle/vbzmirbw6YJzR79j8" data-text="send"><span>Aplicar</span></a>
+                                <a class="reply-btn" href="{{ url('candidatos', $servico->id)}}" data-text="send"><span>Aplicar</span></a>
                                 <p class="form-messege"></p>
                             </form>
                         </div>

@@ -12,6 +12,7 @@ use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\SobreController;
 use App\Http\Controllers\TraducaoController;
 use App\Http\Livewire\Academicas;
+use App\Http\Livewire\Actividades;
 use App\Http\Livewire\Anexos;
 use App\Http\Livewire\Anos;
 use App\Http\Livewire\Aplicars;
@@ -25,6 +26,7 @@ use App\Http\Livewire\DetalheServico;
 use App\Http\Livewire\FormDepoimento;
 use App\Http\Livewire\FormParceiro;
 use App\Http\Livewire\FormPoost;
+use App\Http\Livewire\Formresumo;
 use App\Http\Livewire\FormSlider;
 use App\Http\Livewire\Formulario;
 use App\Http\Livewire\Inicios;
@@ -32,6 +34,7 @@ use App\Http\Livewire\Inscricaos;
 use App\Http\Livewire\Itemcurso;
 use App\Http\Livewire\Itemcursos;
 use App\Http\Livewire\Pacotes;
+use App\Http\Livewire\Perfils;
 use App\Http\Livewire\Servicos;
 use App\Http\Livewire\Sobres;
 use App\Http\Livewire\Superiors;
@@ -51,12 +54,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', Inicios::class);
+Route::get('/dashboard', Inicios::class);
 
-/* Route::resource('bolsa', BolsaController::class);
+require __DIR__.'/auth.php';
 
-Route::resource('ano', AnoController::class);
-
+/*
 Route::resource('inscricao', InscricaoController::class);
 
 Route::resource('curso', CursoController::class);
@@ -73,6 +75,7 @@ Route::resource('sobre', SobreController::class); */
 
 //Livewire
 Route::get('bolsa', Bolsas::class);
+Route::get('/', Inicios::class);
 Route::get('inicio', Inicios::class);
 Route::get('ano', Anos::class);
 Route::get('curso', Cursos::class);
@@ -84,7 +87,7 @@ Route::get('sobre', Sobres::class);
 Route::get('contacto', Contactos::class);
 
 //Formulários
-Route::get('formulario', Formulario::class);
+Route::get('formulario', Formulario::class)->middleware('auth');
 Route::get('servico/{id}', DetalheServico::class);
 
 Route::get('depoimentos', FormDepoimento::class);
@@ -98,10 +101,14 @@ Route::get('pacotes', Pacotes::class);
 Route::get('cursos', Cursos::class);
 Route::get('inscricaos', Inscricaos::class);
 Route::get('itemcursos', Itemcursos::class);
-Route::get('candidatos', Candidatos::class);
+Route::get('candidatos/{id}', Candidatos::class);
 
 Route::get('academicas', Academicas::class);
 Route::get('superiors', Superiors::class);
 Route::get('anexos', Anexos::class);
 
+Route::get('actividades', Actividades::class);
+Route::get('resumo', Formresumo::class);
+
+Route::get('perfils', Perfils::class);
 Route::get('wizards', Wizard::class);

@@ -7,6 +7,7 @@
                         <div class="banner-content-wrapper">
                             <div class="banner-content">
                                 <h2>Formulário de Aplicação</h2>
+                                <h2><small>{{$pacotes->nome}}</small></h2>
                             </div>
                         </div>
                     </div>
@@ -22,7 +23,7 @@
                 <div class="col-md-8 mb-50">
                     <div class="courses-details">
                         <div class="course-details-content">
-                            <h2 class="text-center">Dados Pessoais</h2>
+                            <h2 class="text-center">{{$pacotes->nome}}</h2>
                             @if(!empty($successMessage))
                             <div class="alert alert-success">
                                 {{ $successMessage }}
@@ -44,23 +45,23 @@
                                 <div class="stepwizard-row setup-panel">
                                     <div class="stepwizard-step">
                                         <a href="#step-1" type="button" class="btn btn-circle {{ $currentStep != 1 ? 'btn-default' : 'btn-primary' }}">1</a>
-                                        <p>Passo 1</p>
+                                        <p>Dados Pessoais</p>
                                     </div>
                                     <div class="stepwizard-step">
                                         <a href="#step-2" type="button" class="btn btn-circle {{ $currentStep != 2 ? 'btn-default' : 'btn-primary' }}">2</a>
-                                        <p>Passo 2</p>
+                                        <p>Info. Académico</p>
                                     </div>
                                     <div class="stepwizard-step">
                                         <a href="#step-3" type="button" class="btn btn-circle {{ $currentStep != 3 ? 'btn-default' : 'btn-primary' }}">3</a>
-                                        <p>Passo 3</p>
+                                        <p>Info. Superior</p>
                                     </div>
                                     <div class="stepwizard-step">
                                         <a href="#step-4" type="button" class="btn btn-circle {{ $currentStep != 4 ? 'btn-default' : 'btn-primary' }}">4</a>
-                                        <p>Passo 4</p>
+                                        <p>Anexos</p>
                                     </div>
                                     <div class="stepwizard-step">
                                         <a href="#step-5" type="button" class="btn btn-circle {{ $currentStep != 5 ? 'btn-default' : 'btn-primary' }}" disabled="disabled">5</a>
-                                        <p>Passo 5</p>
+                                        <p>Sucesso</p>
                                     </div>
                                 </div>
                             </div>

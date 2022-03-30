@@ -4,7 +4,13 @@
     </div>
     @endif
 </h3>
+
 <div class="col-xs-12 col-sm-12 col-md-12">
+    <div>
+    <p><img class="img-fluid" src="{{asset('img/icon/certoo.jpeg')}}" style="width: 30px; text-align: center;" /></p>
+
+    </div>
+    @if(!empty($pessoa))
     <div class="form-group">
         <table class="table">
             <tr>
@@ -115,4 +121,7 @@
             @endforeach
         </table>
     </div>
+    @else
+        <h1>Dados não encontrados</h1>
+    @endif
 </div>
