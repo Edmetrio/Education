@@ -7,9 +7,12 @@ use App\Models\Models\Curso;
 use App\Models\Servico;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Cursos extends Component
 {
+    use WithPagination;
+    public $search;
     public $nome, $categoria_id;
     public $edit_nome, $edit_categoria_id, $edit_id;
 
@@ -69,15 +72,15 @@ class Cursos extends Component
         $this->showData = true;
         $this->createData = false;
         $this->updateData = false;
-        session()->flash('status', 'Slider apagado com sucesso!');
+        session()->flash('status', 'Curso apagado com sucesso!');
     }
 
     public function render()
     {
-        $this->curso = Curso::orderBy('created_at', 'desc')->get();
+        $curso = Curso::where('nome', 'like', '%'.$this->search.'%')->with('categorias')->orderBy('created_at', 'desc')->paginate(6);
         $this->servico = Servico::orderBy('created_at', 'desc')->get();
         $this->categoria = Categoria::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.cursos')->layout('layouts.appp', compact('sr'));;
+        return view('livewire.cursos', compact('curso'))->layout('layouts.appp', compact('sr'));;
     }
 }
