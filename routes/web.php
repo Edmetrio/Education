@@ -18,6 +18,7 @@ use App\Http\Livewire\Anos;
 use App\Http\Livewire\Aplicars;
 use App\Http\Livewire\Bolsas;
 use App\Http\Livewire\Candidatos;
+use App\Http\Livewire\Comentario;
 use App\Http\Livewire\Contactos;
 use App\Http\Livewire\Cotacaos;
 use App\Http\Livewire\Cursos;
@@ -56,7 +57,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', Inicios::class);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 /*
 Route::resource('inscricao', InscricaoController::class);
@@ -94,14 +95,18 @@ Route::get('depoimentos', FormDepoimento::class);
 
 Route::get('parceiros', FormParceiro::class);
 Route::get('parceiro/{id}', DetalheParceiro::class);
+Route::get('comentarios', Comentario::class);
 
-Route::get('poosts', FormPoost::class);
-Route::get('sliders', FormSlider::class);
-Route::get('pacotes', Pacotes::class);
-Route::get('cursos', Cursos::class);
-Route::get('inscricaos', Inscricaos::class);
-Route::get('itemcursos', Itemcursos::class);
-Route::get('candidatos/{id}', Candidatos::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('poosts', FormPoost::class);
+    Route::get('sliders', FormSlider::class);
+    Route::get('pacotes', Pacotes::class);
+    Route::get('cursos', Cursos::class);
+    Route::get('inscricaos', Inscricaos::class);
+    Route::get('itemcursos', Itemcursos::class);
+    Route::get('candidatos/{id}', Candidatos::class);
+    Route::get('comentarios/{id}', Comentario::class);
+});
 
 Route::get('academicas', Academicas::class);
 Route::get('superiors', Superiors::class);
