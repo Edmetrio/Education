@@ -1,9 +1,9 @@
 <div>
-
+    @include('livewire.depoimentoModal')
     <!-- Courses Area Start -->
     <div class="courses-area pt-150 text-center">
         <div class="container">
-        <div class="row">
+            <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title">
                         <h2>Serviços</h2>
@@ -34,6 +34,7 @@
                 <div class="col-xs-12">
                     <div class="section-title text-center">
                         <h2>Últimos postes</h2>
+                        
                     </div>
                 </div>
             </div>
@@ -42,15 +43,15 @@
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="single-teacher">
                         <div class="single-teacher-img">
-                            <a href="{{asset('storage')}}/{{$p->icon}}"><img src="{{asset('storage')}}/{{$p->icon}}"  alt="teacher"></a>
+                            <a href="{{ url('comentarios', $p->id) }}"><img src="{{asset('storage')}}/{{$p->icon}}" alt="{{$p->nome}}"></a>
                         </div>
                         <div class="single-teacher-content text-center">
-                            <h2><a href="teacher-details.html">{{ $p->nome }}</a></h2>
+                            <h2><a href="{{ url('comentarios', $p->id) }}">{{ $p->nome }}</a></h2>
                             <h4>{{ $p->descricao }}</h4>
                             <ul>
                                 <li><a href="https://facebook.com/firsteducationmz"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="https://instagram.com/firsteducationmz"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="https://wa.me/+258869125903"><i class="fab fa-whatsapp"></i></a></li>
+                                <li><a href="https://wa.me/+258869125903"><i class="fab fa-whatsapp"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -108,16 +109,15 @@
                 @foreach($depoimento as $d)
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-blog mb-60">
-                        <a href="{{$d->link}}"><img src="{{asset('storage')}}/{{$d->icon}}" alt="course"></a>
+                        <a href="{{ url('depoimento', $d->id) }}"><img src="{{asset('storage')}}/{{$d->icon}}" alt="course"></a>
                         <div class="blog-content">
                             <div class="blog-top">
                                 <p>{{ $d->created_at }}</p>
                             </div>
                             <div class="blog-bottom">
-                                <h2><a href="{{$d->link}}">{{$d->nome}} </a></h2>
+                                <h2><a href="{{ url('depoimento', $d->id) }}">{{$d->nome}} </a></h2>
                                 <h3>{{ $d->descricao }}</h3>
                                 <hr>
-                                <a href="{{$d->link}}">Saiba Mais</a>
                             </div>
                         </div>
                     </div>
@@ -127,6 +127,6 @@
         </div>
     </div>
 
-    
+
 </div>
 </div>
