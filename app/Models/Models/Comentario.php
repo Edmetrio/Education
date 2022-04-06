@@ -22,4 +22,19 @@ class Comentario extends Model
     {
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
+
+    public function curtirs()
+    {
+        return $this->belongsToMany(Curtir::class, 'itemcurtir', 'comentario_id', 'curtir_id');
+    }
+
+    public function itemcurtirs()
+    {
+        return $this->hasMany(Itemcurtir::class, 'comentario_id')
+                        ->where(function ($query){
+                            if(auth()->check()){
+                                $query->where('users_id', auth()->user()->id);
+                            }
+                        });
+    }
 }
