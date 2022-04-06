@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/icon/section.png')}}" />
-
+    <!-- Place favicon.ico in the root directory -->
+    <link href="{{ asset('wizard.css') }}" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="{{url('assets/css/bootstrap-4.3.1-dist/bootstrap-4.3.1-dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/animate.css')}}">
@@ -25,17 +26,16 @@
     <link rel="stylesheet" href="{{url('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{url('assets/css/responsive.css')}}">
 
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <link href="{{ asset('wizard.css') }}" rel="stylesheet" id="bootstrap-css">
-
     <script src="{{url('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+    
 
     @livewireStyles
+
 </head>
 
 <body>
@@ -51,32 +51,12 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="header-top-right text-right">
-                            <ul>
+                            <ul class="header-top-left">
                                 @guest
                                 <li><a href="{{ url('entrar') }}">Entrar</a></li>
-                                <!-- <li><a href="login.html">Cadastrar-se</a></li> -->
                                 @endguest
                                 @auth
-                                <li class="dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ Auth::user()->name }}
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="{{ url('inscricaos')}}">Inscricao</a>
-                                        <a class="dropdown-item" href="{{ url('cursos')}}">Curso</a>
-                                        <a class="dropdown-item" href="{{ url('actividades') }}">Actividades</a>
-                                        <a href="{{ url('resumo') }}">Lista</a>
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                                Sair
-                                            </x-responsive-nav-link>
-                                        </form>
-                                        </a>
-                                    </divb>
-                                </li>
-
+                                <li><a href="">{{ Auth::user()->name }}</a></li>
                                 @endauth
                             </ul>
                         </div>
@@ -98,7 +78,7 @@
                             <div class="main-menu one text-right">
                                 <nav>
                                     <ul>
-                                        <li><a href="{{url('/')}}">Inicio</a>
+                                        <li><a href="{{url('/')}}">Início</a>
                                         </li>
                                         <li><a href="{{url('sobre')}}">Sobre Nós</a></li>
                                         <li><a href="{{url('servico')}}">Serviços</a>
@@ -114,17 +94,55 @@
 
                                         </li>
                                         <li><a href="{{ url('contacto')}}">Contactos</a></li>
+                                        @auth
+                                        <li><a href="">Meu Perfil</a>
+                                        <!-- <ul>
+                                                @foreach($sr as $s)
+                                                <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
+                                                @endforeach
+                                            </ul> -->
+                                            <ul>
+                                                <li><a href="{{ url('inscricaos')}}">Inscrição</a></li>
+                                                <li><a href="{{ url('cursos')}}">Cursos</a></li>
+                                                <li><a href="{{ url('actividades')}}">Actividades</a></li>
+                                                <li><a href="{{ url('resumo')}}">Lista dos Candidatos</a></li>
+                                              
+                                                <li><a href="{{ url('sliders')}}">Slider</a></li>
+                                                <li><a href="{{ url('formulario')}}">Serviço</a></li>
+                                                <li><a href="{{ url('poosts')}}">Postes</a></li>
+                                                <li><a href="{{ url('parceiros')}}">Parceiro</a></li>
+                                                <li><a href="{{ url('depoimentos')}}">Depoimento</a></li>
+                                                <hr>
+                                                <li>
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                                            Sair
+                                                        </x-responsive-nav-link>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        @endauth
                                     </ul>
                                 </nav>
                             </div>
                             <!--Search Form Start-->
                             <div class="search-btn">
                                 <ul data-toggle="dropdown" class="header-search search-toggle">
+                                    @guest
                                     <li class="search-menu">
-                                        <i class="fa fa-search"></i>
+                                        <a type="button" data-toggle="modal" data-target="#" href="{{ url('/') }}"><img src="{{asset('img/logo/Logo.png')}}" alt="FirstEducation" /></a>
                                     </li>
+                                    @endguest
+                                    @auth
+                                    <li class="search-menu">
+                                        <a href="{{ url('/') }}"><img src="{{asset('img/logo/Logo.png')}}" alt="FirstEducation" /></a>
+                                    </li>
+                                    @endauth
                                 </ul>
-                                <div class="search">
+                                <!-- <div class="search">
                                     <div class="search-form">
                                         <form id="search-form" action="#">
                                             <input type="search" placeholder="Procurar.." name="search" />
@@ -133,7 +151,7 @@
                                             </button>
                                         </form>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <!--End of Search Form-->
                             <!-- Main Menu End -->
@@ -148,6 +166,7 @@
     </header>
 
     {{ $slot }}
+
 
     <footer class="footer-area">
         <div class="main-footer">
