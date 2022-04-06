@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Models\Comentario as ModelsComentario;
+use App\Models\Models\Curtir;
+use App\Models\Models\Itemcurtir;
 use App\Models\Models\Poost;
 use App\Models\Servico;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +18,7 @@ class Comentario extends Component
     {
         $this->poosts_id = $id;
         $this->poost = Poost::find($id);
+        $this->curtir = Curtir::orderBy('created_at', 'desc')->get();
     }
     
     private function limpar()
@@ -36,13 +39,33 @@ class Comentario extends Component
         $this->limpar();
         session()->flash('status', 'Comentário adicionado!');
     }
+
+    public function curtir($id)
+    {
+        Itemcurtir::create(['comentario_id' => $id, 
+                            'users_id' => Auth::user()->id, 
+                            'curtir_id' => '3ce23584-56cc-45ce-853d-98c9965053bf']);
+        session()->flash('status', 'Actualizado com sucesso!');
+    }
+
+    public function descurtir($id)
+    {
+        Itemcurtir::where('comentario_id', $id)
+        ->where('users_id', Auth::user()->id)->delete();
+        session()->flash('status', 'Pagado com sucesso!');
+    }
+        
     
     public function render()
     {
-        $this->comentario = ModelsComentario::with('users')
+        $this->item = Itemcurtir::where('comentario_id', '45ab46d2-9b62-48c2-a865-7c5762c50fbd')->count();
+
+        /* dd($this->item); */
+        $this->comentario = ModelsComentario::with('users','curtirs','itemcurtirs')
         ->where('poosts_id', $this->poosts_id)
         ->orderBy('created_at', 'desc')->get();
-        $this->ultimo = Poost::orderBy('created_at', 'desc')->get();
+        /* dd($this->comentario); */
+        $this->ultimo = Poost::whereNotIn('id', [$this->poosts_id])->orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
         return view('livewire.comentario')->layout('layouts.appp', compact('sr'));
     }
