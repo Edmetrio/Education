@@ -10,8 +10,17 @@ use App\Models\Servico;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+
 class Inicios extends Component
 {
+    public $nome, $icon;
+
+    public function edit($id)
+    {
+        $depoimento = Depoimento::find($id);
+        $this->nome = $depoimento->nome;
+        $this->icon = $depoimento->icon;
+    }
 
     public function render()
     {
@@ -21,6 +30,6 @@ class Inicios extends Component
         $depoimento = Depoimento::orderBy('created_at', 'desc')->paginate(6);
         $parceiro = Parceiro::orderBy('created_at', 'desc')->paginate(4);
         $slider = Slider::orderBy('created_at', 'desc')->paginate(6);
-        return view('livewire.inicios', compact('poost','parceiro','depoimento','servico'))->layout('layouts.template', compact('slider','sr'));
+        return view('livewire.inicios', compact('poost', 'parceiro', 'depoimento', 'servico'))->layout('layouts.template', compact('slider', 'sr'));
     }
 }
