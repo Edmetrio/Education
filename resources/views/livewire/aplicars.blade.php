@@ -25,9 +25,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="courses-details">
-                        <div class="courses-details-img">
-                            <img src="img/course/courses-details.jpg" alt="courses-details">
-                        </div>
+                        
                         <div class="course-details-content">
                             <h2>Como Aplicar
                             </h2>
