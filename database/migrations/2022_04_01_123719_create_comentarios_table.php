@@ -19,7 +19,7 @@ class CreateComentariosTable extends Migration
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('poosts_id')->nullable();
             $table->foreign('poosts_id')->references('id')->on('poost')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('nome')->nullable();
+            $table->longText('nome')->nullable();
             $table->string('curtir')->default('off')->nullable();
             $table->string('estado')->default('on')->nullable();
             $table->timestamps();
