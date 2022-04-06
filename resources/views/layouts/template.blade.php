@@ -49,7 +49,7 @@
                             <div class="main-menu one text-right">
                                 <nav>
                                     <ul>
-                                        <li><a href="{{url('/')}}">Inicio</a>
+                                        <li><a href="{{url('/')}}">Início</a>
                                         </li>
                                         <li><a href="{{ url('sobre')}}">Sobre Nós</a></li>
                                         <li><a href="{{ url('servico')}}">Serviços</a>
