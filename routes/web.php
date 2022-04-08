@@ -20,6 +20,7 @@ use App\Http\Livewire\Bolsas;
 use App\Http\Livewire\Candidatos;
 use App\Http\Livewire\Comentario;
 use App\Http\Livewire\Contactos;
+use App\Http\Livewire\Contas;
 use App\Http\Livewire\Cotacaos;
 use App\Http\Livewire\Cursos;
 use App\Http\Livewire\Detalhedepoimento;
@@ -109,6 +110,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('inscricaos', Inscricaos::class);
     Route::get('itemcursos', Itemcursos::class);
     Route::get('comentarios/{id}', Comentario::class);
+    Route::get('contas', Contas::class);
 });
 
 Route::get('academicas', Academicas::class);
