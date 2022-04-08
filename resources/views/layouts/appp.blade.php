@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
 
     <script src="{{url('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
-    
+
 
     @livewireStyles
 
@@ -96,17 +96,17 @@
                                         <li><a href="{{ url('contacto')}}">Contactos</a></li>
                                         @auth
                                         <li><a href="">Meu Perfil</a>
-                                        <!-- <ul>
+                                            <!-- <ul>
                                                 @foreach($sr as $s)
                                                 <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
                                                 @endforeach
                                             </ul> -->
+                                            
                                             <ul>
                                                 <li><a href="{{ url('inscricaos')}}">Inscrição</a></li>
                                                 <li><a href="{{ url('cursos')}}">Cursos</a></li>
                                                 <li><a href="{{ url('actividades')}}">Actividades</a></li>
                                                 <li><a href="{{ url('resumo')}}">Lista dos Candidatos</a></li>
-                                              
                                                 <li><a href="{{ url('sliders')}}">Slider</a></li>
                                                 <li><a href="{{ url('formulario')}}">Serviço</a></li>
                                                 <li><a href="{{ url('poosts')}}">Postes</a></li>
@@ -117,7 +117,7 @@
                                                     <form method="POST" action="{{ route('logout') }}">
                                                         @csrf
                                                         <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
+                                                            this.closest('form').submit();">
                                                             Sair
                                                         </x-responsive-nav-link>
                                                     </form>
