@@ -107,11 +107,13 @@
                                                 <li><a href="{{ url('cursos')}}">Cursos</a></li>
                                                 <li><a href="{{ url('actividades')}}">Actividades</a></li>
                                                 <li><a href="{{ url('resumo')}}">Lista dos Candidatos</a></li>
-                                                <li><a href="{{ url('sliders')}}">Slider</a></li>
-                                                <li><a href="{{ url('formulario')}}">Serviço</a></li>
+                                                <li><a href="{{ route('sliders')}}">Slider</a></li>
+                                                <li><a href="{{ route('formulario')}}">Serviço</a></li>
                                                 <li><a href="{{ url('poosts')}}">Postes</a></li>
                                                 <li><a href="{{ url('parceiros')}}">Parceiro</a></li>
                                                 <li><a href="{{ url('depoimentos')}}">Depoimento</a></li>
+                                                <li><a href="{{ url('users')}}">Utilizadores</a></li>
+                                                <li><a href="{{ url('permissaos')}}">Permissões</a></li>
                                                 <hr>
                                                 <li>
                                                     <form method="POST" action="{{ route('logout') }}">
