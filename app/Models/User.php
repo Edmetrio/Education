@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Models\Inscricao;
+use App\Models\Models\Role;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,6 +29,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'role_id',
         'email',
         'password',
     ];
@@ -54,5 +56,10 @@ class User extends Authenticatable
     public function Inscricaos()
     {
         return $this->hasMany(Inscricao::class, 'entidade_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 }
