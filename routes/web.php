@@ -38,10 +38,12 @@ use App\Http\Livewire\Itemcurso;
 use App\Http\Livewire\Itemcursos;
 use App\Http\Livewire\Pacotes;
 use App\Http\Livewire\Perfils;
+use App\Http\Livewire\Permissaos;
 use App\Http\Livewire\Servicos;
 use App\Http\Livewire\Sobres;
 use App\Http\Livewire\Superiors;
 use App\Http\Livewire\Traducaos;
+use App\Http\Livewire\Users;
 use App\Http\Livewire\Wizard;
 use App\Models\Models\Depoimento;
 use Illuminate\Support\Facades\Route;
@@ -91,7 +93,6 @@ Route::get('sobre', Sobres::class);
 Route::get('contacto', Contactos::class);
 
 //Formulários
-Route::get('formulario', Formulario::class)->middleware('auth');
 Route::get('servico/{id}', DetalheServico::class);
 
 Route::get('depoimentos', FormDepoimento::class);
@@ -102,15 +103,18 @@ Route::get('comentarios', Comentario::class);
 Route::get('depoimento/{id}', Detalhedepoimento::class);
 Route::get('candidatos/{id}', Candidatos::class);
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('poosts', FormPoost::class);
-    Route::get('sliders', FormSlider::class);
+Route::group(['middleware' => 'auth', 'accessrole'], function () {
+    Route::get('poosts', FormPoost::class)->name('poosts');
+    Route::get('sliders', FormSlider::class)->name('sliders');
+    Route::get('formulario', Formulario::class)->name('formulario');
     Route::get('pacotes', Pacotes::class);
     Route::get('cursos', Cursos::class);
     Route::get('inscricaos', Inscricaos::class);
     Route::get('itemcursos', Itemcursos::class);
     Route::get('comentarios/{id}', Comentario::class);
     Route::get('contas', Contas::class);
+    Route::get('users', Users::class)->name('users');
+    Route::get('permissaos', Permissaos::class)->name('permissaos');
 });
 
 Route::get('academicas', Academicas::class);
