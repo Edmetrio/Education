@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Models\Slider;
 use App\Models\Servico;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,8 +12,8 @@ use Livewire\WithFileUploads;
 class FormSlider extends Component
 {
     use WithFileUploads;
-    public $nome, $descricao, $icon, $texto;
-    public $edit_nome, $edit_descricao, $edit_texto, $edit_id, $old_icon, $new_icon;
+    public $nome, $descricao, $icon, $texto, $texto1, $texto2, $link;
+    public $edit_nome, $edit_descricao, $edit_texto, $edit_texto1, $edit_texto2, $edit_link, $edit_id, $old_icon, $new_icon;
 
     public $slider;
 
@@ -22,9 +23,21 @@ class FormSlider extends Component
 
     private function resetInput()
     {
+        $this->edit_nome = '';
+        $this->edit_descricao = '';
+        $this->edit_texto = '';
+        $this->edit_texto1 = '';
+        $this->edit_texto2 = '';
+        $this->edit_link = '';
+        $this->old_icon = '';
+        $this->new_icon = '';
+
         $this->nome = '';
         $this->descricao = '';
         $this->texto = '';
+        $this->texto1 = '';
+        $this->texto2 = '';
+        $this->link = '';
         $this->icon = '';
     }
 
@@ -38,6 +51,11 @@ class FormSlider extends Component
         ]);
 
         $validateDate['icon'] = $this->icon->store('files', 'public');
+        $validateDate['users_id'] = Auth::user()->id;
+        $validateDate['texto1'] = $this->texto1;
+        $validateDate['texto2'] = $this->texto2;
+        $validateDate['link'] = $this->link;
+
         Slider::create($validateDate);
         $this->resetInput();
         session()->flash('status', 'Slider criado com sucesso!');  
@@ -53,6 +71,9 @@ class FormSlider extends Component
         $this->edit_nome = $slider->nome;
         $this->edit_descricao = $slider->descricao;
         $this->edit_texto = $slider->texto;
+        $this->edit_texto1 = $slider->texto1;
+        $this->edit->texto2 = $slider->texto2;
+        $this->edit_link = $slider->link;
         $this->old_icon = $slider->icon;
     }
 
@@ -80,6 +101,9 @@ class FormSlider extends Component
         $validateDate['nome'] = $this->edit_nome;
         $validateDate['descricao'] = $this->edit_descricao;
         $validateDate['texto'] = $this->edit_texto;
+        $validateDate['texto1'] = $this->edit_texto1;
+        $validateDate['texto2'] = $this->edit_texto2;
+        $validateDate['link'] = $this->edit_link;
         $validateDate['icon'] = $filename;
         
         $slider->update($validateDate);
