@@ -16,4 +16,9 @@ class Role extends Model
 
     protected $table = 'role';
     protected $fillable = ['nome','estado'];
+
+    public function rotas()
+    {
+        return $this->belongsToMany(Rota::class, 'permissao');
+    }
 }
