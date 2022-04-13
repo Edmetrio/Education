@@ -27,13 +27,14 @@ class Permissao extends Model
         return $this->hasMany(Rota::class, 'id', 'rota_id');
     }
 
-    public static function isRoleHasRightToAccess($userRole, $routeName)
+    public static function isRoleHasRightToAccess($user, $route)
     {
         try {
-            $model = static::where('role', $userRole)
-                            ->where('route_name', $routeName)
-                            ->first();
-            return $model ? true : false;                
+            $model = static::where('role_id', $user)
+                    ->where('rota_id', $route)
+                    ->first();
+                    
+            return $model ? true : false;
         } catch (\Throwable $th) {
             return false;
         }
