@@ -214,6 +214,5 @@
                 <hr>
             </div>
         </div>
-        <!-- Blog End -->
     </div>
 </div>
