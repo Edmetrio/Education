@@ -15,5 +15,5 @@ class Slider extends Model
     protected $guarded = [];
 
     protected $table = 'slider';
-    protected $fillable = ['nome','icon','descricao','texto','estado'];
+    protected $fillable = ['nome','icon','descricao','texto','texto1','texto2','link','estado'];
 }
