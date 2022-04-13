@@ -74,6 +74,27 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>1 Texto:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="texto1" placeholder="Detail"></textarea>
+                                            @error('texto1') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>2 Texto:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="texto2" placeholder="Detail"></textarea>
+                                            @error('texto2') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Link:</strong>
+                                            <input type="text" wire:model="link" class="form-control" placeholder="link">
+                                            @error('link') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                         <button type="submit" wire:click.prevent="store()" class="btn btn-primary">Adicionar</button>
                                     </div>
                                 </div>
