@@ -26,6 +26,7 @@ use App\Http\Livewire\Cursos;
 use App\Http\Livewire\Detalhedepoimento;
 use App\Http\Livewire\DetalheParceiro;
 use App\Http\Livewire\DetalheServico;
+use App\Http\Livewire\Detalheslider;
 use App\Http\Livewire\FormDepoimento;
 use App\Http\Livewire\FormParceiro;
 use App\Http\Livewire\FormPoost;
@@ -102,8 +103,9 @@ Route::get('parceiro/{id}', DetalheParceiro::class);
 Route::get('comentarios', Comentario::class);
 Route::get('depoimento/{id}', Detalhedepoimento::class);
 Route::get('candidatos/{id}', Candidatos::class);
+Route::get('sliders/{id}', Detalheslider::class);
 
-Route::group(['middleware' => 'auth', 'accessrole'], function () {
+Route::group(['middleware' => ['auth', 'accessrole']], function () {
     Route::get('poosts', FormPoost::class)->name('poosts');
     Route::get('sliders', FormSlider::class)->name('sliders');
     Route::get('formulario', Formulario::class)->name('formulario');
@@ -111,7 +113,7 @@ Route::group(['middleware' => 'auth', 'accessrole'], function () {
     Route::get('cursos', Cursos::class);
     Route::get('inscricaos', Inscricaos::class);
     Route::get('itemcursos', Itemcursos::class);
-    Route::get('comentarios/{id}', Comentario::class);
+    Route::get('comentarios/{id}', Comentario::class)->name('comentarios');
     Route::get('contas', Contas::class);
     Route::get('users', Users::class)->name('users');
     Route::get('permissaos', Permissaos::class)->name('permissaos');
