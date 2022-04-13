@@ -16,4 +16,5 @@ class Rota extends Model
 
     protected $table = 'rota';
     protected $fillable = ['nome','estado'];
+
 }
