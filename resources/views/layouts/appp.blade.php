@@ -112,8 +112,8 @@
                                                 <li><a href="{{ url('poosts')}}">Postes</a></li>
                                                 <li><a href="{{ url('parceiros')}}">Parceiro</a></li>
                                                 <li><a href="{{ url('depoimentos')}}">Depoimento</a></li>
-                                                <li><a href="{{ url('users')}}">Utilizadores</a></li>
-                                                <li><a href="{{ url('permissaos')}}">Permissões</a></li>
+                                                <li><a href="{{ route('users')}}">Utilizadores</a></li>
+                                                <li><a href="{{ route('permissaos')}}">Permissões</a></li>
                                                 <hr>
                                                 <li>
                                                     <form method="POST" action="{{ route('logout') }}">
