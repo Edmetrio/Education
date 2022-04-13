@@ -87,12 +87,16 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7 col-md-offset-left-5">
-                                <div class="slide-content-wrapper text-left">
+                                <div class="slide-content-wrapper text-left ml-20">
                                     <div class="slide-content">
 
                                         <h2> {{ $s->nome }} </h2>
                                         <p> {{ $s->descricao }} </p>
-                                        <a class="default-btn" href="{{url('sobre')}}">Saiba mais</a>
+                                        @if(is_null($s->texto1))
+                                        <a class="default-btn" href="{{ url($s->link)}}">Saiba mais</a>
+                                        @else
+                                        <a class="default-btn" href="{{ url('sliders', $s->id)}}">Saiba mais</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -103,21 +107,6 @@
             @endforeach
         </div>
     </section>
-
-    <!-- <section class="choose-area pb-85 pt-77">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-left-4 col-sm-8 col-md-offset-left-4">
-                    <div class="choose-content text-left">
-                        <h2>POR QUE ESCOLHER A FE ?</h2>
-                        <p> A First Education tem agentes experientes que servem de ponte entre as Universidades e os alunos, facilitando assim todo processo desde a candidatura até aceitação. </p>
-                        <p class="choose-option">A First Education tem agentes específicos espalhados pelas Universidades e contactos com muitas Universidades que tratam directamente dos processos dos estudantes candidatos às vagas. </p>
-                        <a class="default-btn" href="{{url('servico')}}">Aplique Já</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     {{ $slot }}
 
