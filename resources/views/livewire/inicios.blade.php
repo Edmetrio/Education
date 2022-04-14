@@ -34,7 +34,7 @@
                 <div class="col-xs-12">
                     <div class="section-title text-center">
                         <h2>Últimos postes</h2>
-                        
+
                     </div>
                 </div>
             </div>
@@ -123,6 +123,10 @@
                     </div>
                 </div>
                 @endforeach
+            </div>
+
+            <div style="float: right;">
+                {{$depoimento->links()}}
             </div>
         </div>
     </div>
