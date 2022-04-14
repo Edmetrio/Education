@@ -14,8 +14,6 @@
             </div>
         </div>
     </div>
-    <!-- Banner Area End -->
-    <!-- Blog Start -->
     <div class="courses-details-area blog-area pt-150 pb-20">
         <div class="container">
             <div class="row">
@@ -26,17 +24,10 @@
                         </div>
                         <div class="course-details-content">
                             <h2>{{$poost->nome}}</h2>
-                            <p>{{$poost->descricao}}
-                            </p>
+                            <p>{{$poost->descricao}}</p>
+                            <h1></h1>
                         </div>
                         <div class="reply-area">
-                            <h3>Comenta o nosso poster
-                            </h3>
-                            @if ($message = Session::get('status'))
-                            <div>
-                                <p class="alert alert-success" class="table p-field p-col-12 p-md-6 table-striped" style="text-align: center;">{{ $message }}</p>
-                            </div>
-                            @endif
                             @if ($errors->any())
                             <div class="alert alert-danger">
                                 <strong>Opss!</strong> Algum problema com seu formulário<br><br>
@@ -47,8 +38,6 @@
                                 </ul>
                             </div>
                             @endif
-                            <p>.
-                            </p>
                             <form>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -57,13 +46,18 @@
                                         <span class="text-danger">
                                             @error('nome'){{$message}}@enderror
                                         </span>
+                                        @guest
+                                        <a href="{{url('register')}}" class="default-btn" type="submit"><span>Comentar</span></a>
+                                        @endguest
+                                        @auth
                                         <button wire:click.prevent="store()" class="default-btn" type="submit"><span>Comentar</span></button>
+                                        @endauth
                                     </div>
                             </form>
                             @foreach($comentario as $c)
-                            <div class="col-md-2 mt-20">
+                            <!-- <div class="col-md-2 mt-20">
                                 <img class="img-fluid" src="{{asset('img/logo/avatar.jpg')}}" style="width: 50%; vertical-align: middle;" />
-                            </div>
+                            </div> -->
                             <div class="col-md-10 mt-20 float-right">
                                 <form>
                                     <div class="single-event mb-10">
