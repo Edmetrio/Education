@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Models\Poost;
 use App\Models\Models\Slider;
 use App\Models\Servico;
 use Illuminate\Support\Facades\Auth;
@@ -54,7 +55,7 @@ class FormSlider extends Component
         $validateDate['users_id'] = Auth::user()->id;
         $validateDate['texto1'] = $this->texto1;
         $validateDate['texto2'] = $this->texto2;
-        $validateDate['link'] = $this->link;
+        $validateDsate['link'] = $this->link;
 
         Slider::create($validateDate);
         $this->resetInput();
@@ -69,15 +70,15 @@ class FormSlider extends Component
         $slider = Slider::findorFail($id);
         $this->edit_id = $slider->id;
         $this->edit_nome = $slider->nome;
+        $this->old_icon = $slider->icon;
         $this->edit_descricao = $slider->descricao;
         $this->edit_texto = $slider->texto;
         $this->edit_texto1 = $slider->texto1;
-        $this->edit->texto2 = $slider->texto2;
+        $this->edit_texto2 = $slider->texto2;
         $this->edit_link = $slider->link;
-        $this->old_icon = $slider->icon;
     }
 
-    public function update($id)
+    public function update()
     {
         $validateDate = $this->validate([
             'edit_nome' => 'required',
@@ -86,7 +87,7 @@ class FormSlider extends Component
             /* 'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' */
         ]);
 
-        $slider = Slider::findOrFail($id);
+        $slider = Slider::findOrFail($this->edit_id );
         $destination = public_path('storage\\'.$slider->icon);
         $filename = "";
         if ($this->new_icon === null) {
@@ -128,8 +129,10 @@ class FormSlider extends Component
 
     public function render()
     {
+        $poost = Poost::orderBy('created_at', 'desc')->paginate(3);
+        $this->servicos = Servico::orderBy('created_at', 'desc')->get();
         $this->slider = Slider::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
-        return view('livewire.form-slider')->layout('layouts.appp', compact('sr'));
+        return view('livewire.form-slider', compact('poost'))->layout('layouts.appp', compact('sr'));
     }
 }
