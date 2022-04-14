@@ -40,8 +40,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="{{url('/')}}"><img src="{{asset('img/logo/Logo.png')}}" alt="logo" class="img-fluid" style=" width: 70px;
-                                    height: 40px;"></a>
+                            <a href="{{url('/')}}"><img src="{{asset('img/logo/Logo.png')}}" alt="logo" class="img-fluid" ></a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-12">
@@ -87,7 +86,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-7 col-md-offset-left-5">
-                                <div class="slide-content-wrapper text-left ml-20">
+                                <div class="slide-content-wrapper">
                                     <div class="slide-content">
 
                                         <h2> {{ $s->nome }} </h2>
