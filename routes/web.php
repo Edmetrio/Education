@@ -40,6 +40,7 @@ use App\Http\Livewire\Itemcursos;
 use App\Http\Livewire\Pacotes;
 use App\Http\Livewire\Perfils;
 use App\Http\Livewire\Permissaos;
+use App\Http\Livewire\Rotas;
 use App\Http\Livewire\Servicos;
 use App\Http\Livewire\Sobres;
 use App\Http\Livewire\Superiors;
@@ -81,50 +82,50 @@ Route::resource('aplicar', AplicarController::class);
 Route::resource('sobre', SobreController::class); */
 
 //Livewire
-Route::get('bolsa', Bolsas::class);
-Route::get('/', Inicios::class);
-Route::get('inicio', Inicios::class);
-Route::get('ano', Anos::class);
-Route::get('curso', Cursos::class);
-Route::get('cotacao', Cotacaos::class);
-Route::get('traducao', Traducaos::class);
-Route::get('aplicar', Aplicars::class);
-Route::get('servico', Servicos::class);
-Route::get('sobre', Sobres::class);
-Route::get('contacto', Contactos::class);
+Route::get('bolsa', Bolsas::class)->name('bolsa');
+Route::get('/', Inicios::class)->name('/');
+Route::get('inicio', Inicios::class)->name('inicio');
+Route::get('ano', Anos::class)->name('ano');
+Route::get('curso', Cursos::class)->name('curso');
+Route::get('cotacao', Cotacaos::class)->name('cotacao');
+Route::get('traducao', Traducaos::class)->name('traducao');
+Route::get('aplicar', Aplicars::class)->name('aplicar');
+Route::get('servico', Servicos::class)->name('servico');
+Route::get('sobre', Sobres::class)->name('sobre');
+Route::get('contacto', Contactos::class)->name('contacto');
 
 //Formulários
-Route::get('servico/{id}', DetalheServico::class);
+Route::get('servico/{id}', DetalheServico::class)->name('servico');
 
-Route::get('depoimentos', FormDepoimento::class);
-
-Route::get('parceiros', FormParceiro::class);
-Route::get('parceiro/{id}', DetalheParceiro::class);
-Route::get('comentarios', Comentario::class);
-Route::get('depoimento/{id}', Detalhedepoimento::class);
-Route::get('candidatos/{id}', Candidatos::class);
-Route::get('sliders/{id}', Detalheslider::class);
+Route::get('depoimentos', FormDepoimento::class)->name('depoimentos');
+Route::get('parceiros', FormParceiro::class)->name('parceiros');
+Route::get('parceiro/{id}', DetalheParceiro::class)->name('parceiro');
+Route::get('comentarios', Comentario::class)->name('comentarios');
+Route::get('depoimento/{id}', Detalhedepoimento::class)->name('depoimento');
+Route::get('candidatos/{id}', Candidatos::class)->name('candidatos');
+Route::get('sliders/{id}', Detalheslider::class)->name('sliders');
 
 Route::group(['middleware' => ['auth', 'accessrole']], function () {
+    Route::get('actividades', Actividades::class)->name('actividades');
+    Route::get('resumo', Formresumo::class)->name('resumo');
     Route::get('poosts', FormPoost::class)->name('poosts');
     Route::get('sliders', FormSlider::class)->name('sliders');
     Route::get('formulario', Formulario::class)->name('formulario');
-    Route::get('pacotes', Pacotes::class);
-    Route::get('cursos', Cursos::class);
-    Route::get('inscricaos', Inscricaos::class);
-    Route::get('itemcursos', Itemcursos::class);
-    Route::get('comentarios/{id}', Comentario::class)->name('comentarios');
-    Route::get('contas', Contas::class);
+    Route::get('pacotes', Pacotes::class)->name('pacotes');
+    Route::get('cursos', Cursos::class)->name('cursos');
+    Route::get('inscricaos', Inscricaos::class)->name('inscricaos');
+    Route::get('itemcursos', Itemcursos::class)->name('itemcursos');
     Route::get('users', Users::class)->name('users');
     Route::get('permissaos', Permissaos::class)->name('permissaos');
 });
+Route::get('rotas', Rotas::class)->name('rotas');
+Route::get('contas', Contas::class)->name('contas')->middleware();
+Route::get('comentarios/{id}', Comentario::class)->name('comentarios');
 
-Route::get('academicas', Academicas::class);
-Route::get('superiors', Superiors::class);
-Route::get('anexos', Anexos::class);
 
-Route::get('actividades', Actividades::class);
-Route::get('resumo', Formresumo::class);
+/* Route::get('academicas', Academicas::class)->name('academicas');
+Route::get('superiors', Superiors::class)->name('superiors');
+Route::get('anexos', Anexos::class)->name('anexos'); */
 
-Route::get('perfils', Perfils::class);
-Route::get('wizards', Wizard::class);
+
+Route::get('perfils', Perfils::class)->name('perfils');
