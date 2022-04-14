@@ -85,9 +85,9 @@
                             <div class="single-course-left">
                                 <h3>10% da Propina</h3><br>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                    
                                     <label class="form-check-label" for="flexCheckIndeterminate">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confirmo que a First Education será minha agente e que pagarei 10% da propina em caso de aceitação.
+                                        Confirmo que a First Education será minha agente e que pagarei 10% da propina em caso de aceitação.
                                         <p>Confirmo que no caso de insatisfação, posso recorrer a devolucão de 50% do valor da aplicação antes de efectuar a devida aplicação nas Universidades</p>
                                     </label>
                                 </div>
@@ -106,8 +106,18 @@
 
                         </div>
                         <div class="reply-area">
-                            <form id="contact-form" action="http://preview.hasthemes.com/eduhome/mail.php" method="post">
-                                <a class="reply-btn" href="{{ url('candidatos', $servico->id)}}" data-text="send"><span>Aplicar</span></a>
+                            <form id="contact-form" action="" method="post">
+                                @if($servico->id === '3b719c3b-2bd8-494d-a5d5-a3ef8aa288d3')
+                                <a class="reply-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSetBIyV2Z8p-g-yRlLAXHmOPElc4ESEzxAWo2wkEfZNz9ZycQ/viewform" data-text="send"><span>Inscricao</span></a>
+                                @elseif($servico->id === 'f2b13ba4-00cb-4098-ab73-cc58d4de5240')
+                                <a class="reply-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeCuHFaC0m8-Td_y5TTZEKO8ZHAjkXyv8v3VcZG0Dm5Tczubg/viewform" data-text="send"><span>Bolsa</span></a>
+                                @elseif($servico->id === '6a69933a-9a66-4f4a-9dce-31479b294d8f')
+                                <a class="reply-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeOqlvRAacJjWmStouk60ULS67wYqsZtyegIw0q6MpW7oKUoQ/viewform" data-text="send"><span>Ano</span></a>
+                                @elseif($servico->id === '832900de-eb34-4348-87f6-33993fa3cbea')
+                                <a class="reply-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfJsXy-wndVbJR8U6Q8JcxZUYH11evq5AYooeqlavUzU8BjpQ/viewform" data-text="send"><span>Curso</span></a>
+                                @elseif($servico->id === 'ea0bd96d-e519-42d8-8ac2-feae05ba64d9')
+                                <a class="reply-btn" href="" data-text="send"><span>Cotação</span></a>
+                                @endif
                                 <p class="form-messege"></p>
                             </form>
                         </div>
