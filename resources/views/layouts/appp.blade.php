@@ -95,23 +95,37 @@
                                         </li>
                                         <li><a href="{{ url('contacto')}}">Contactos</a></li>
                                         @auth
-                                        <li><a href="">Meu Perfil</a>
+                                        <li><a href="">Meu Perfil</a>  
                                             <!-- <ul>
                                                 @foreach($sr as $s)
                                                 <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
                                                 @endforeach
-                                            </ul> -->
-                                            
+                                            </ul>  -->
+                                            @if(Auth::user()->role_id === '7f243f2e-ef1e-4454-9ae2-34d091efbc9u')                                        
                                             <ul>
-                                                <li><a href="{{ url('inscricaos')}}">Inscrição</a></li>
-                                                <li><a href="{{ url('cursos')}}">Cursos</a></li>
-                                                <li><a href="{{ url('actividades')}}">Actividades</a></li>
-                                                <li><a href="{{ url('resumo')}}">Lista dos Candidatos</a></li>
+                                                <li><a href="{{ route('contas')}}">Perfil</a></li>
+                                                <hr>
+                                                <li>
+                                                    <form method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                                            Sair
+                                                        </x-responsive-nav-link>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                            @else
+                                            <ul>
+                                                <li><a href="{{ route('inscricaos')}}">Inscrição</a></li>
+                                                <li><a href="{{ route('cursos')}}">Cursos</a></li>
+                                                <li><a href="{{ route('actividades')}}">Actividades</a></li>
+                                                <li><a href="{{ route('resumo')}}">Lista dos Candidatos</a></li>
                                                 <li><a href="{{ route('sliders')}}">Slider</a></li>
                                                 <li><a href="{{ route('formulario')}}">Serviço</a></li>
-                                                <li><a href="{{ url('poosts')}}">Postes</a></li>
-                                                <li><a href="{{ url('parceiros')}}">Parceiro</a></li>
-                                                <li><a href="{{ url('depoimentos')}}">Depoimento</a></li>
+                                                <li><a href="{{ route('poosts')}}">Postes</a></li>
+                                                <li><a href="{{ route('parceiros')}}">Parceiro</a></li>
+                                                <li><a href="{{ route('depoimentos')}}">Depoimento</a></li>
                                                 <li><a href="{{ route('users')}}">Utilizadores</a></li>
                                                 <li><a href="{{ route('permissaos')}}">Permissões</a></li>
                                                 <hr>
@@ -125,6 +139,7 @@
                                                     </form>
                                                 </li>
                                             </ul>
+                                            @endif
                                         </li>
                                         @endauth
                                     </ul>
