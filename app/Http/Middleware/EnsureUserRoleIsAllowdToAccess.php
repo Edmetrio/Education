@@ -37,6 +37,8 @@ class EnsureUserRoleIsAllowdToAccess
                 abort(403, 'Não Autorizado!');
             }
         } catch (\Throwable $th) {
+            $route = Route::currentRouteName();
+            echo $route.'<br/>';
             abort(403, 'Você não esta autorizador a aceder essa página!');
         }
 
