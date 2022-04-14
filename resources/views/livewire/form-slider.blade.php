@@ -162,6 +162,27 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Texto1:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="edit_texto1" placeholder="Detail"></textarea>
+                                            @error('edit_texto1') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Texto2:</strong>
+                                            <textarea class="form-control" style="height:150px" wire:model="edit_texto2" placeholder="Detail"></textarea>
+                                            @error('edit_texto2') <span classs="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Link:</strong>
+                                            <input type="text" wire:model="edit_link" class="form-control" placeholder="Nome">
+                                            @error('edit_link') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                         <button type="submit" wire:click.prevent="update('{{$edit_id}}')" class="btn btn-primary">Alterar</button>
                                     </div>
                                 </div>
@@ -174,16 +195,45 @@
                 <div class="col-md-4">
                     <div class="blog-sidebar right">
                         <div class="single-blog-widget mb-50">
-                            <h3>Aplica-se já</h3>
-                            <hr>
+                            <h3>Serviços</h3>
                             <ul>
-                                <li><a href="{{url("inscricao")}}">Inscrições universitárias</a></li>
-                                <li><a href="{{url("bolsa")}}">Bolsas de Estudos</a></li>
-                                <li><a href="{{url("online")}}">Cursos Online</a></li>
-                                <li><a href="{{url("fundacao")}}">Ano de Fundação</a></li>
-                                <li><a href="#">Prdução de CV</a></li>
+                            @foreach($servicos as $s)
+                                <li><a href="{{ url('servico', $s->id)}}">{{ $s->nome }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
+                        <div class="single-blog-widget mb-50">
+                            <div class="single-blog-banner">
+                                <img src="{{asset('img/blog/blog-img.jpg')}}" alt="blog">
+                                <h2>Escolha<br> Acertada<br> First Education</h2>
+                            </div>
+                        </div>
+                        <div class="single-blog-widget mb-50">
+                            <h3>Últimos Poosts</h3>
+                            @foreach($poost as $p)
+                            <div class="single-post mb-30">
+                                <div class="single-post-img">
+                                    <a href="{{asset('storage')}}/{{$p->icon}}"><img src="{{asset('storage')}}/{{$p->icon}}" style="width: 70px; height: 70px;" alt="post">
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a href="{{asset('storage')}}/{{$p->icon}}">{{ $p->nome }}</a></h4>
+                                    <p>{{ $p->created_at}}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+<!--                         <div class="single-blog-widget">
+                            <h3>Aceitações</h3>
+                            <div class="single-tag">
+                                <a href="blog-details.html" class="mr-10 mb-10">course</a>
+                                <a href="blog-details.html" class="mr-10 mb-10">education</a>
+                                <a href="blog-details.html" class="mb-10">teachers</a>
+                                <a href="blog-details.html" class="mr-10">learning</a>
+                                <a href="blog-details.html" class="mr-10">university</a>
+                                <a href="blog-details.html">events</a>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
 
