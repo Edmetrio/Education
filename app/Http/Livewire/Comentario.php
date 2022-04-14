@@ -58,9 +58,8 @@ class Comentario extends Component
     
     public function render()
     {
-        $this->item = Itemcurtir::where('comentario_id', '45ab46d2-9b62-48c2-a865-7c5762c50fbd')->count();
-
-        /* dd($this->item); */
+        /* $this->item = Itemcurtir::where('poost_id', $this->poosts_id)->count();
+        dd($this->item); */
         $this->comentario = ModelsComentario::with('users','curtirs','itemcurtirs')
         ->where('poosts_id', $this->poosts_id)
         ->orderBy('created_at', 'desc')->get();
