@@ -1,19 +1,10 @@
 <div>
-    <div class="banner-area-wrapper">
-        <div class="banner-area text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="banner-content-wrapper">
-                            <div class="banner-content">
-                                <h2>{{ $servico->nome }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 text-center">
+            <img src="{{asset('img/banner/44.png')}}" alt="about">
         </div>
     </div>
+
     <div class="courses-details-area blog-area pt-150 pb-20">
         <div class="container">
             <div class="row">
@@ -60,7 +51,7 @@
                                         <tbody>
                                             <tr>
                                                 @foreach($servico->pacotes as $s)
-                                                <td>{{ $s->valor }}</td>
+                                                <td>{{number_format($s->valor, 2, ',','.') ?? ''}}</td>
                                                 @endforeach
                                             </tr>
                                         </tbody>
@@ -108,7 +99,7 @@
                         <div class="reply-area">
                             <form id="contact-form" action="" method="post">
                                 @if($servico->id === '3b719c3b-2bd8-494d-a5d5-a3ef8aa288d3')
-                                <a class="reply-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSetBIyV2Z8p-g-yRlLAXHmOPElc4ESEzxAWo2wkEfZNz9ZycQ/viewform" data-text="send"><span>Inscricao</span></a>
+                                <a class="reply-btn" href="{{ route('candidatos', $servico->id)}}" data-text="send"><span>Inscricao</span></a>
                                 @elseif($servico->id === 'f2b13ba4-00cb-4098-ab73-cc58d4de5240')
                                 <a class="reply-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeCuHFaC0m8-Td_y5TTZEKO8ZHAjkXyv8v3VcZG0Dm5Tczubg/viewform" data-text="send"><span>Bolsa</span></a>
                                 @elseif($servico->id === '6a69933a-9a66-4f4a-9dce-31479b294d8f')
