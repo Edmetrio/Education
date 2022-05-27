@@ -18,45 +18,7 @@
     <div class="courses-details-area blog-area pt-100 pb-20">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    @if ($message = Session::get('status'))
-                    <div>
-                        <p class="alert alert-success" class="table p-field p-col-12 p-md-6 table-striped" style="text-align: center;">{{ $message }}</p>
-                    </div>
-                    @endif
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Nome das Rotas</th>
-                                    <th scope="col">Criação</th>
-                                    <th scope="col">Acções</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($permissao as $s)
-                                <tr>
-                                    @foreach($s->roles as $r)
-                                    <td>{{ $r->nome }}</td>
-                                    @endforeach
-                                    @foreach($s->rotas as $r)
-                                    <td>{{ $r->nome }}</td>
-                                    @endforeach
-                                    <td>{{ $s->created_at->diffForhumans() }}</td>
-                                    <td>
-                                        <button wire:click="edit('{{$s->id}}')"><i class="fas fa-edit"></i></button>
-                                        <button wire:click="delete('{{$s->id}}')"><i class="fas fa-trash"></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-                <div class="col-md-8">
+                <div class="col-md-8 mb-20  ">
                     <div class="courses-details">
                         <div class="course-details-content">
                             <h2>Permissões</h2>
@@ -76,7 +38,7 @@
                             </div>
                             @endif
                             <hr>
-                            
+
 
                             @if($updateData == true)
                             <div class="row">
@@ -139,9 +101,60 @@
                                 </div>
                             </div>
                             @endif
+
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="blog-sidebar right">
+                        <div class="single-blog-widget mb-50">
+                            <h3>Gerir Utilizadores</h3>
+                            <ul>
+                                <li><a href="{{ route('rotas') }}">Rotas</a></li>
+                                <li><a href="{{ route('roles') }}">Roles</a></li>
+                                <li><a href="{{ route('users') }}">Utilizadores</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    @if ($message = Session::get('status'))
+                    <div>
+                        <p class="alert alert-success" class="table p-field p-col-12 p-md-6 table-striped" style="text-align: center;">{{ $message }}</p>
+                    </div>
+                    @endif
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Nome das Rotas</th>
+                                    <th scope="col">Criação</th>
+                                    <th scope="col">Acções</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($permissao as $s)
+                                <tr>
+                                    @foreach($s->roles as $r)
+                                    <td>{{ $r->nome }}</td>
+                                    @endforeach
+                                    @foreach($s->rotas as $r)
+                                    <td>{{ $r->nome }}</td>
+                                    @endforeach
+                                    <td>{{ $s->created_at->diffForhumans() }}</td>
+                                    <td>
+                                        <button wire:click="edit('{{$s->id}}')"><i class="fas fa-edit"></i></button>
+                                        <button wire:click="delete('{{$s->id}}')"><i class="fas fa-trash"></button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
 
             </div>
         </div>
