@@ -3,23 +3,12 @@
     @include('livewire.perfils')
     @include('livewire.aceitacaos')
     @include('livewire.documento')
-    <div class="banner-area-wrapper">
-        <div class="banner-area text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="banner-content-wrapper">
-                            <div class="banner-content">
-                                <h2>Como Aplicar</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <img src="{{asset('img/banner/00.png')}}" alt="about">
         </div>
     </div>
-    <!-- Banner Area End -->
-    <!-- Blog Start -->
+    
     <div class="courses-details-area blog-area pt-150 pb-20">
         <div class="container">
             <div class="row">
