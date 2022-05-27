@@ -40,6 +40,7 @@ use App\Http\Livewire\Itemcursos;
 use App\Http\Livewire\Pacotes;
 use App\Http\Livewire\Perfils;
 use App\Http\Livewire\Permissaos;
+use App\Http\Livewire\Roles;
 use App\Http\Livewire\Rotas;
 use App\Http\Livewire\Servicos;
 use App\Http\Livewire\Sobres;
@@ -119,6 +120,7 @@ Route::group(['middleware' => ['auth', 'accessrole']], function () {
     Route::get('permissaos', Permissaos::class)->name('permissaos');
 });
 Route::get('rotas', Rotas::class)->name('rotas');
+Route::get('roles', Roles::class)->name('roles');
 Route::get('contas', Contas::class)->name('contas')->middleware();
 Route::get('comentarios/{id}', Comentario::class)->name('comentarios');
 
