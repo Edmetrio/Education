@@ -183,6 +183,14 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <strong>Visibilidade</strong>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" wire:model="">Estado</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                         <button type="submit" wire:click.prevent="update('{{$edit_id}}')" class="btn btn-primary">Alterar</button>
                                     </div>
                                 </div>
