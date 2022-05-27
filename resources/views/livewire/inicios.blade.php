@@ -14,7 +14,7 @@
                 @foreach($servico as $s)
                 <div class="col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 5%;">
                     <div class="single-course">
-                        <a href="{{ url('servico', $s->id) }}"><img src="{{ url("storage/{$s->icon}") }}" alt="course" width="200px" height="200px">
+                        <a href="{{ url('servico', $s->id) }}"><img src="{{ ('storage')}}/{{$s->icon}}" alt="{{$s->nome}}" width="200px" height="200px">
                         </a>
                         <div class="course-content">
                             <h3 style="text-align: center;"><a href="{{ url('servico', $s->id) }}">{{ $s->nome }}</a></h3>
@@ -130,7 +130,5 @@
             </div>
         </div>
     </div>
-
-
 </div>
 </div>
