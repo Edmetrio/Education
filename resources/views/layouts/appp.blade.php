@@ -126,8 +126,7 @@
                                                 <li><a href="{{ route('poosts')}}">Postes</a></li>
                                                 <li><a href="{{ route('parceiros')}}">Parceiro</a></li>
                                                 <li><a href="{{ route('depoimentos')}}">Depoimento</a></li>
-                                                <li><a href="{{ route('users')}}">Utilizadores</a></li>
-                                                <li><a href="{{ route('permissaos')}}">Permissões</a></li>
+                                                <li><a href="{{ route('permissaos')}}">Gerir Utilizadores</a></li>
                                                 <hr>
                                                 <li>
                                                     <form method="POST" action="{{ route('logout') }}">
