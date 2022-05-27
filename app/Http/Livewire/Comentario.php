@@ -20,7 +20,7 @@ class Comentario extends Component
         $this->poost = Poost::find($id);
         $this->curtir = Curtir::orderBy('created_at', 'desc')->get();
     }
-    
+
     private function limpar()
     {
         $this->nome = '';
@@ -42,30 +42,45 @@ class Comentario extends Component
 
     public function curtir($id)
     {
-        Itemcurtir::create(['comentario_id' => $id, 
-                            'users_id' => Auth::user()->id, 
-                            'curtir_id' => '3ce23584-56cc-45ce-853d-98c9965053bf']);
-        session()->flash('status', 'Actualizado com sucesso!');
+        if (auth()->check()) {
+            Itemcurtir::create([
+                'comentario_id' => $id,
+                'poost_id' => $this->poosts_id,
+                'users_id' => Auth::user()->id,
+                'curtir_id' => '3ce23584-56cc-45ce-853d-98c9965053bf'
+            ]);
+            session()->flash('status', 'Actualizado com sucesso!');
+        }
+        
     }
 
     public function descurtir($id)
     {
-        Itemcurtir::where('comentario_id', $id)
-        ->where('users_id', Auth::user()->id)->delete();
-        session()->flash('status', 'Pagado com sucesso!');
+        if (auth()->check()) {
+            Itemcurtir::where('comentario_id', $id)
+                ->where('users_id', Auth::user()->id)->delete();
+            session()->flash('status', 'Pagado com sucesso!');
+        }
     }
-        
-    
+
+    public function delete($id)
+    {
+        ModelsComentario::findOrFail($id)->delete();
+        $this->limpar();
+        session()->flash('status', 'Comentário Apagado!');
+    }
+
+
     public function render()
     {
-        /* $this->item = Itemcurtir::where('poost_id', $this->poosts_id)->count();
-        dd($this->item); */
-        $this->comentario = ModelsComentario::with('users','curtirs','itemcurtirs')
-        ->where('poosts_id', $this->poosts_id)
-        ->orderBy('created_at', 'desc')->get();
+        $this->item = Itemcurtir::where('poost_id', $this->poosts_id)->count();
+        /* dd($this->item); */
+        $this->comentario = ModelsComentario::with('users', 'curtirs', 'itemcurtirs')
+            ->where('poosts_id', $this->poosts_id)
+            ->orderBy('created_at', 'desc')->get();
         /* dd($this->comentario); */
         $this->ultimo = Poost::whereNotIn('id', [$this->poosts_id])->orderBy('created_at', 'desc')->get();
-        $sr = Servico::orderBy('created_at', 'desc')->get();
+        $sr = Servico::orderBy('created_at', 'asc')->get();
         return view('livewire.comentario')->layout('layouts.appp', compact('sr'));
     }
 }
