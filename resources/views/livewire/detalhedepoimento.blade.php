@@ -1,19 +1,10 @@
 <div>
-<div class="banner-area-wrapper">
-        <div class="banner-area text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="banner-content-wrapper">
-                            <div class="banner-content">
-                                <h2>{{ $depoimento->nome }}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <img src="{{asset('img/banner/00.png')}}" alt="about">
         </div>
     </div>
+    
     <div class="event-details-area blog-area pt-150 pb-10">
         <div class="container">
             <div class="row">
@@ -28,7 +19,7 @@
                         <div class="event-details-content">
                             <h2>{{ $depoimento->nome }}</h2>
                             <ul>
-                                <li><span>Universidade: {{$depoimento->descricao}}</span></li>
+                                <li><span>Título: {{$depoimento->descricao}}</span></li>
                                 <!-- <li><span>venue : </span>Cristal Centre, 254 New Yourk</li> -->
                             </ul>
                             <p>{{$depoimento->texto}}</p>
@@ -72,7 +63,7 @@
                             @foreach($poost as $p)
                             <div class="single-post mb-30">
                                 <div class="single-post-img">
-                                    <a href="{{asset('storage')}}/{{$p->icon}}"><img src="{{asset('storage')}}/{{$p->icon}}" style="width: 70px; height: 70px;" alt="post">
+                                    <a href="{{ route('poosts')}}"><img src="{{asset('storage')}}/{{$p->icon}}" style="width: 70px; height: 70px;" alt="post">
                                     </a>
                                 </div>
                                 <div class="single-post-content">
