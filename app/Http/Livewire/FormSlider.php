@@ -130,9 +130,9 @@ class FormSlider extends Component
     public function render()
     {
         $poost = Poost::orderBy('created_at', 'desc')->paginate(3);
-        $this->servicos = Servico::orderBy('created_at', 'desc')->get();
+        $this->servicos = Servico::orderBy('created_at', 'asc')->get();
         $this->slider = Slider::orderBy('created_at', 'desc')->get();
-        $sr = Servico::orderBy('created_at', 'desc')->get();
+        $sr = Servico::orderBy('created_at', 'asc')->get();
         return view('livewire.form-slider', compact('poost'))->layout('layouts.appp', compact('sr'));
     }
 }
