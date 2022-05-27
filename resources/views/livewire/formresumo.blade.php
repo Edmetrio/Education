@@ -25,7 +25,7 @@
                 </h3>
 
                 <div class="col-xs-12 col-sm-8 col-md-8">
-                    <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="col-xs-12 col-sm-12 col-md-6 mb-120">
                         <div class="form-group">
                             <strong>Candidato:</strong>
                             <select class="form-control" wire:model="selectedCandidato">
