@@ -100,7 +100,7 @@
                 @endif
 
                 @if($showData == true)
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="thead-dark">
@@ -127,6 +127,19 @@
                 </div>
                 @endif
                 <hr>
+                <div class="col-md-4">
+                    <div class="blog-sidebar right">
+                        <div class="single-blog-widget mb-50">
+                            <h3>Gerir Utilizadores</h3>
+                            <ul>
+                                <li><a href="{{ route('rotas') }}">Rotas</a></li>
+                                <li><a href="{{ route('roles') }}">Roles</a></li>
+                                <li><a href="{{ route('users') }}">Utilizadores</a></li>
+                                <li><a href="{{ route('permissaos') }}">Permissões</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- Blog End -->
