@@ -1,21 +1,10 @@
 <div>
-    <div class="banner-area-wrapper">
-        <div class="banner-area text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="banner-content-wrapper">
-                            <div class="banner-content">
-                                <h2>Sobre Nós</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <img src="{{asset('img/banner/66.png')}}" alt="about">
         </div>
     </div>
-    <!-- Banner Area End -->
-    <!-- About Start -->
+
     <div class="about-area pt-145 pb-155">
         <div class="container">
             <div class="row">
