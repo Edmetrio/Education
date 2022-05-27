@@ -25,7 +25,9 @@
                         <div class="course-details-content">
                             <h2>{{$poost->nome}}</h2>
                             <p>{{$poost->descricao}}</p>
-                            <h1></h1>
+                            <div class="event-date">
+                                <h3>{{$item}} <span>Like</span></h3>
+                            </div>
                         </div>
                         <div class="reply-area">
                             @if ($errors->any())
@@ -55,12 +57,20 @@
                                     </div>
                             </form>
                             @foreach($comentario as $c)
-                            <!-- <div class="col-md-2 mt-20">
-                                <img class="img-fluid" src="{{asset('img/logo/avatar.jpg')}}" style="width: 50%; vertical-align: middle;" />
-                            </div> -->
-                            <div class="col-md-10 mt-20 float-right">
+                            <div class="col-md-1 mt-10">
+                                <img class="img-fluid" src="{{asset('img/logo/avatar.jpg')}}" width="30" height="30" />
+                            </div>
+                            <div class="col-md-11 float-right">
                                 <form>
                                     <div class="single-event mb-10">
+
+                                        @guest
+                                        @else
+                                        @if ($c->users->id === Auth::user()->id)
+                                        <p><a href="" wire:click.prevent="delete('{{$c->id}}')" class="float-right mr-10">X</a></p>
+                                        @else
+                                        @endif
+                                        @endif
                                         <!-- <div class="event-date">
                                         <img class="img-fluid" src="{{asset('img/logo/Logo.png')}}" style="width: 100px; text-align: center;" />
                                     </div> -->
@@ -73,14 +83,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <small class="float-right">{{ $c->created_at->diffForhumans() }}</small></p>
-                                @if($c->itemcurtirs->count())
-                                <!-- {{$c->itemcurtirs->count()}} -->
-                                <button style="background-color: white;" class="float-right mr-20" wire:click.prevent="descurtir('{{$c->id}}')">Discurtir </button>
-                                @else
-                                <button style="background-color: white;" class="float-right mr-20" wire:click.prevent="curtir('{{$c->id}}')">Curtir </button>
-                                @endif 
+                                    @if($c->itemcurtirs->count())
+                                    
+                                    <button style="background-color: white;" class="float-right mr-20" wire:click.prevent="descurtir('{{$c->id}}')">Discurtir </button>
+                                    @else
+                                    <button style="background-color: white;" class="float-right mr-20" wire:click.prevent="curtir('{{$c->id}}')">Curtir </button>
+                                    @endif
                                 </form>
                             </div>
                             @endforeach
