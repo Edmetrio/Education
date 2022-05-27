@@ -1,18 +1,7 @@
 <div>
-    <div class="banner-area-wrapper">
-        <div class="banner-area text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="banner-content-wrapper">
-                            <div class="banner-content">
-                                <h2>Formulário de Aplicação</h2>
-                                <h2><small>{{$pacotes->nome}}</small></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <img src="{{asset('img/banner/00.png')}}" alt="about">
         </div>
     </div>
 
