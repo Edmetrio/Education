@@ -23,6 +23,9 @@ class Roles extends Component
         ]);
 
         Role::create($validateDate);
+        $this->message = 'Role criado com sucesso!';
+        $this->text = 'Por favor, verifique na tabela';
+        $this->alertSuccess();
         $this->resetInput();
         session()->flash('status', 'Role criado com sucesso!'); 
     }
@@ -62,5 +65,14 @@ class Roles extends Component
         $this->roles = Role::orderBy('created_at', 'desc')->get();
         $sr = Servico::orderBy('created_at', 'desc')->get();
         return view('livewire.roles')->layout('layouts.appp', compact('sr'));
+    }
+
+    public function alertSuccess()
+    {
+        $this->dispatchBrowserEvent('swal:modal', [
+                'type' => 'success',  
+                'message' => $this->message, 
+                'text' => $this->text
+            ]);
     }
 }
