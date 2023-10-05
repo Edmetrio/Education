@@ -13,6 +13,7 @@ use Livewire\WithPagination;
 
 class Inicios extends Component
 {
+    use WithPagination;
     public $nome, $icon;
 
     public function edit($id)
