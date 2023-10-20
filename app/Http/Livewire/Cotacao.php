@@ -120,7 +120,7 @@ class Cotacao extends Component
     public function render()
     {
         $titulo = Titulo::orderBy('created_at', 'desc')->get();
-        $cotacao = ModelsCotacao::with('titulos','users','remanescentes')->orderBy('created_at', 'desc')->paginate(2);
+        $cotacao = ModelsCotacao::with('titulos','users','remanescentes')->orderBy('created_at', 'desc')->paginate(10);
         /* dd($cotacao); */
         $total = 0.0;
         $tt = 0.0;
@@ -132,7 +132,7 @@ class Cotacao extends Component
         $tt += $r->valor; 
         }
         $cotacao->tt = $tt;
-        
+        /* dd($rm); */
         $sr = Servico::orderBy('created_at', 'asc')->get();
         return view('livewire.cotacao', compact('titulo','cotacao'))->layout('layouts.appp', compact('sr'));
     }
