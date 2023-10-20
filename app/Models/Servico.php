@@ -21,7 +21,7 @@ class Servico extends Model
 
     public function pacotes()
     {
-        return $this->hasMany(Pacote::class, 'servico_id');
+        return $this->hasMany(Pacote::class, 'servico_id')->orderBy('created_at', 'desc');
     }
 
     public function itemcursos()
